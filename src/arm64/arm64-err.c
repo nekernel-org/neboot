@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-	Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -10,14 +10,12 @@
 
 /// @brief Goes into a panic state.
 /// @param reason why?
-void cb_panic(const char* reason)
-{
-	cb_put_string("panic: ");
-	cb_put_string(reason);
-	cb_put_char('\n');
+void cb_panic(const char* reason) {
+  cb_put_string("panic: ");
+  cb_put_string(reason);
+  cb_put_char('\n');
 
-	while (yes)
-	{
-		asm volatile("hlt #0");
-	}
+  while (yes) {
+    asm volatile("hlt #0");
+  }
 }

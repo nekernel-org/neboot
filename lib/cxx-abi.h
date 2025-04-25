@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-	Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -8,16 +8,14 @@
 
 #define DSO_MAX_OBJECTS (128)
 
-struct atexit_func_entry_t
-{
-	void (*destructor_func)(void*);
-	void* obj_ptr;
-	void* dso_handle;
+struct atexit_func_entry_t {
+  void (*destructor_func)(void*);
+  void* obj_ptr;
+  void* dso_handle;
 };
 
 typedef unsigned uarch_t;
 
-namespace cxxabiv1
-{
-	typedef void* __guard;
+namespace cxxabiv1 {
+typedef void* __guard;
 }
