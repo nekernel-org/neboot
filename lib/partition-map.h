@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024-2025, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -35,8 +35,9 @@
 #define EPM_MAGIC "EPMMS" /* mass storage */
 #endif
 
-#define EPM_MAX_BLKS (128) /* 1 on UEFI EPM. */
+#define EPM_MAX_BLKS (128) /* 1 on UEFI EPM, because of it would only fit on a sector. */
 
+/// @brief Size of a partition block (roughly 512 bytes)
 #define EPM_PART_BLK_SZ sizeof(struct part_block)
 
 /// @brief Start of EPM headers.
@@ -81,11 +82,11 @@ typedef struct part_block part_block_t;
 ///! @brief variant enum.
 ///! use it in the boot block version field.
 enum {
-  EPM_INVALID    = 0x00,
-  EPM_GENERIC_OS = 0xcf,
-  EPM_LINUX      = 0x8f,
-  EPM_BSD        = 0x9f,
-  EPM_ZKAOS      = 0x1f,
+  EPM_INVALID     = 0x00,
+  EPM_GENERIC_OS  = 0xcf,
+  EPM_LINUX       = 0x8f,
+  EPM_BSD         = 0x9f,
+  EPM_NEKERNEL_OS = 0x1f,
 };
 
 /// @brief check for supported filesystem.
@@ -95,6 +96,8 @@ boolean cb_filesystem_exists(caddr_t fs, size_t len);
 bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba,
                                       size_t* start_lba, size_t* sector_sz);
 
+/// @brief Parse Partition block info at index.
+/// @param index the partition block to parse.
 part_block_t* cb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index);
 
 #endif  // ifndef __PARTITION_MAP_H__

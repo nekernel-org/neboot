@@ -1,0 +1,142 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{titlesec}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{caption}
+\usepackage{longtable}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\definecolor{codegray}{gray}{0.95}
+
+\lstdefinestyle{customc}{
+  backgroundcolor=\color{codegray},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  showstringspaces=false,
+  frame=single,
+  language=C
+}
+
+\title{EPM Partition Map Specification}
+\author{Amlal EL Mahrouss}
+\date{2024-2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Overview}
+This document specifies the Explicit Partition Map (EPM) data structures and constants as defined in \texttt{partition\_map.h}. The EPM is designed to store partition information in a platform-independent manner with architecture-specific magic identifiers.
+
+\section{Constants and Macros}
+
+\subsection{Magic Strings}
+\begin{longtable}{|l|l|}
+\hline
+\textbf{Macro} & \textbf{Description} \\
+\hline
+\texttt{EPM\_MAGIC\_X86} & "EPMAM", used on AMD64 \\
+\texttt{EPM\_MAGIC\_RV} & "EPMRV", used on RISC-V \\
+\texttt{EPM\_MAGIC\_ARM} & "EPMAR", used on ARM \\
+\texttt{EPM\_MAGIC\_64X0} & "EPM64", for custom 64x0 architecture \\
+\texttt{EPM\_MAGIC\_32X0} & "EPM32", for custom 32x0 architecture \\
+\texttt{EPM\_MAGIC\_PPC} & "EPMPC", used on POWER \\
+\texttt{EPM\_MAGIC} & Defaults based on architecture \\
+\hline
+\end{longtable}
+
+\subsection{Layout Macros}
+\begin{itemize}
+  \item \texttt{EPM\_MAX\_BLKS = 128} \\
+  Maximum number of blocks in the partition table (first 128 LBAs).
+  \item \texttt{EPM\_PART\_BLK\_SZ} \\
+  Size of the \texttt{part\_block} structure.
+  \item \texttt{EPM\_PART\_BLK\_START = 0} \\
+  Start LBA of EPM partition headers.
+  \item \texttt{EPM\_REVISION = 2} \\
+  Current revision of the EPM format.
+\end{itemize}
+
+\section{Data Structures}
+
+\subsection{boot\_guid\_t}
+\begin{lstlisting}[style=customc]
+typedef struct boot_guid {
+  uint32_t data1;
+  uint16_t data2;
+  uint16_t data3;
+  uint8_t  data4[8];
+} __attribute__((packed)) boot_guid_t;
+\end{lstlisting}
+A GUID structure used for identifying partitions.
+
+\subsection{part\_block}
+\begin{lstlisting}[style=customc]
+struct __attribute__((packed)) part_block {
+  ascii_char_t magic[5];        // Magic string
+  ascii_char_t name[32];        // Human-readable name
+  boot_guid_t  uuid;            // Partition UUID
+  int32_t      version;         // Partition version
+  int32_t      num_blocks;      // Number of blocks
+  int64_t      lba_start;       // Starting LBA
+  int64_t      sector_sz;       // Sector size
+  int64_t      lba_end;         // Ending LBA
+  int16_t      type;            // Partition type
+  int32_t      fs_version;      // Filesystem version
+  ascii_char_t fs[16];          // Filesystem name
+  ascii_char_t reserved[401];   // Reserved for future use
+};
+\end{lstlisting}
+
+\subsection*{Filesystem Type Values}
+\begin{longtable}{|l|l|}
+\hline
+\textbf{Enum Value} & \textbf{Meaning} \\
+\hline
+\texttt{EPM\_INVALID} & \texttt{0x00} - Invalid/undefined \\
+\texttt{EPM\_GENERIC\_OS} & \texttt{0xcf} - Generic OS partition \\
+\texttt{EPM\_LINUX} & \texttt{0x8f} - Linux partition \\
+\texttt{EPM\_BSD} & \texttt{0x9f} - BSD partition \\
+\texttt{EPM\_NEKERNEL\_OS} & \texttt{0x1f} - NeKernel-specific \\
+\hline
+\end{longtable}
+
+\section{Functions}
+
+\subsection{\texttt{cb\_filesystem\_exists}}
+\begin{lstlisting}[style=customc]
+boolean cb_filesystem_exists(caddr_t fs, size_t len);
+\end{lstlisting}
+Checks if a filesystem name is supported.
+
+\subsection{\texttt{cb\_parse\_partition\_block\_data\_at}}
+\begin{lstlisting}[style=customc]
+bool cb_parse_partition_block_data_at(
+  voidptr_t blob,
+  size_t blob_sz,
+  size_t index,
+  size_t* end_lba,
+  size_t* start_lba,
+  size_t* sector_sz);
+\end{lstlisting}
+Parses an EPM partition block from a blob at the specified index and returns LBA information.
+
+\subsection{\texttt{cb\_parse\_partition\_block\_at}}
+\begin{lstlisting}[style=customc]
+part_block_t* cb_parse_partition_block_at(
+  voidptr_t blob,
+  size_t blob_sz,
+  size_t index);
+\end{lstlisting}
+Returns a pointer to a parsed EPM partition block at the specified index.
+
+\end{document}
+
