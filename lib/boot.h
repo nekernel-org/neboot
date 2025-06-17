@@ -93,7 +93,7 @@ typedef ptrtype_t        size_t;
 #define CB_BOOT_ADDR 0x1030000
 #define CB_BOOT_ADDR_STR "0x1030000"
 #define CB_FRAMEBUFFER_ADDR 0x40000000L
-#define CB_FLASH_BASE_ADDR 0x08000000
+#define CB_FLASH_BASE_ADDR 0x60000000
 
 static inline void __sync_synchronize(void) {
   /// leave it as is.

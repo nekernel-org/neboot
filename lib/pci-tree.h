@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024-2025, Amlal EL Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -19,12 +19,6 @@
 #define CB_BASE_ADDRESS (0x20008000) /* PCI base mapped in virtual memory. */
 #define CB_PCI_TREE_BASE (0x802000)  /* The PCI tree base address. */
 
-#define PCI_CONFIG_SPACE (4096U)
-
-#define PCI_BUS_MAX (256U)
-#define PCI_DEV_MAX (32U)
-#define PCI_FN_MAX (8U)
-
 /* version 1.0 */
 #define CB_PCI_VERSION (0x0100)
 
@@ -32,6 +26,12 @@
 #define CB_PCI_INT_SZ sizeof(cb_pci_num_t)
 
 #define CB_PCI_NAME_LEN (255U)
+
+#define PCI_CONFIG_SPACE (4096U)
+
+#define PCI_BUS_MAX (256U)
+#define PCI_DEV_MAX (32U)
+#define PCI_FN_MAX (8U
 
 typedef char      cb_pci_char_t;
 typedef uintptr_t cb_pci_num_t;
