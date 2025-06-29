@@ -81,7 +81,13 @@ void cb_start_exec(void) {
   */
 
   if (boot_hdr->h_mag[0] == CB_BOOT_MAG_0 && boot_hdr->h_mag[1] == CB_BOOT_MAG_1) {
-    if (boot_hdr->h_revision != CB_BOOT_VER) {
+    uint32_t rev = boot_hdr->h_revision;
+
+#ifdef __aarch64__
+    rev = __builtin_bswap32(rev);
+#endif
+
+    if (rev != CB_BOOT_VER) {
       if (hart == 0) {
         cb_put_string("CB> Can't Boot the StageTwo, LX invalid signature. (CB0003)\r\n");
       }
