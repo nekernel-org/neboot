@@ -18,7 +18,7 @@ Build the documentation using Doxygen's `doxygen` CLI tool.
 ## Cloning:
 
 ```sh
-  git clone git@github.com:amlel-el-mahrouss/fw.git
+  git clone git@github.com:nekernel-org/firmware.git
 ```
 
 ###### Copyright 2024-2025, Amlal EL Mahrouss. all rights reserved.
