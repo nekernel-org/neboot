@@ -1,7 +1,7 @@
 {
-  "machine": "EPM AARCH64",
+  "machine": "EPM GENERIC",
   "type": "Generic",
-  "vendor": "Amlal El Mahrouss",
+  "vendor": "NeKernel.org",
   "fb": "0x1000000",
   "boot": "0x4000000",
   "pci-tree": "0x8002000",
