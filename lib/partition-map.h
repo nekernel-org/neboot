@@ -87,6 +87,7 @@ enum {
   EPM_LINUX       = 0x8f,
   EPM_BSD         = 0x9f,
   EPM_NEKERNEL_OS = 0x1f,
+  EPM_SNU_OS      = 0x2f,
 };
 
 /// @brief check for supported filesystem.
