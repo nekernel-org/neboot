@@ -4,7 +4,7 @@
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 [![QEMU Tested](https://img.shields.io/badge/QEMU-Tested-success)](#)
 
-## Notice for documentation:
+## Notice for Doxygen:
 
 Build the documentation using Doxygen's `doxygen` CLI tool.
 
@@ -22,4 +22,4 @@ Build the documentation using Doxygen's `doxygen` CLI tool.
     cd neboot
 ```
 
-###### Copyright 2024-2025, Amlal EL Mahrouss. all rights reserved.
+###### Copyright 2024-2025, Amlal El Mahrouss and NeKernel.org Authors all rights reserved.
