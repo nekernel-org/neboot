@@ -4,8 +4,8 @@
 
 ------------------------------------------- */
 
-#ifndef __CB_FDT_H__
-#define __CB_FDT_H__
+#ifndef __NB_FDT_H__
+#define __NB_FDT_H__
 
 #include <lib/boot.h>
 
@@ -60,4 +60,4 @@ static inline fdt64_t cpu_to_fdt64(uint64_t x) {
 #undef CPU_TO_FDT16
 #undef EXTRACT_BYTE
 
-#endif  //!__CB_FDT_H__
+#endif  //!__NB_FDT_H__

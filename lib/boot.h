@@ -8,7 +8,7 @@
 
 ///
 /// @file boot.h
-/// @brief CoreBoot types, data structures, and standard library.
+/// @brief NeBoot types, data structures, and standard library.
 ///
 
 typedef __UINTPTR_TYPE__ uintptr_t;
@@ -66,34 +66,34 @@ typedef ptrtype_t        size_t;
 #define true yes
 #endif  //!_cplusplus
 
-#define CB_RESTART 0
-#define CB_SHUTDOWN 1
+#define NB_RESTART 0
+#define NB_SHUTDOWN 1
 
 #define __COPYRIGHT(s) /* unused */
 
 #ifdef __COMPILE_RISCV__
-#define CB_BOOT_ADDR (0x80020000)
-#define CB_BOOT_ADDR_STR "0x80020000"
-#define CB_FRAMEBUFFER_ADDR 0x40000000L
-#define CB_UART_BASE 0x10000000
-#define CB_FLASH_BASE_ADDR 0x08000000
+#define NB_BOOT_ADDR (0x80020000)
+#define NB_BOOT_ADDR_STR "0x80020000"
+#define NB_FRAMEBUFFER_ADDR 0x40000000L
+#define NB_UART_BASE 0x10000000
+#define NB_FLASH_BASE_ADDR 0x08000000
 
 #define cb_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_POWERPC__)
-#define CB_UART_BASE 0x10000000
-#define CB_BOOT_ADDR 0x1030000
-#define CB_BOOT_ADDR_STR "0x1030000"
-#define CB_FRAMEBUFFER_ADDR 0x40000000L
-#define CB_FLASH_BASE_ADDR 0x08000000
+#define NB_UART_BASE 0x10000000
+#define NB_BOOT_ADDR 0x1030000
+#define NB_BOOT_ADDR_STR "0x1030000"
+#define NB_FRAMEBUFFER_ADDR 0x40000000L
+#define NB_FLASH_BASE_ADDR 0x08000000
 
 #define cb_sync_synchronize() __sync_synchronize()
 #elif defined(__COMPILE_ARM64__)
 
-#define CB_UART_BASE 0x09000000
-#define CB_BOOT_ADDR 0x1030000
-#define CB_BOOT_ADDR_STR "0x1030000"
-#define CB_FRAMEBUFFER_ADDR 0x40000000L
-#define CB_FLASH_BASE_ADDR 0x60000000
+#define NB_UART_BASE 0x09000000
+#define NB_BOOT_ADDR 0x1030000
+#define NB_BOOT_ADDR_STR "0x1030000"
+#define NB_FRAMEBUFFER_ADDR 0x40000000L
+#define NB_FLASH_BASE_ADDR 0x60000000
 
 static inline void __sync_synchronize(void) {
   /// leave it as is.
@@ -102,17 +102,17 @@ static inline void __sync_synchronize(void) {
 #define cb_sync_synchronize() __sync_synchronize()
 #endif  // ifndef __COMPILE_POWERPC__
 
-#define CB_BAUDRATE_TABLE \
+#define NB_BAUDRATE_TABLE \
   { 300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 }
 
-#define CB_STRING(s) #s
+#define NB_STRING(s) #s
 
-#define CB_BOOT_MAG_0 'C'
-#define CB_BOOT_MAG_1 'B'
+#define NB_BOOT_MAG_0 'C'
+#define NB_BOOT_MAG_1 'B'
 
-#define CB_BOOT_VER 0x101
+#define NB_BOOT_VER 0x101
 
-#define CB_BOOT_CALL(struct, offset)                                       \
+#define NB_BOOT_CALL(struct, offset)                                       \
   volatile cb_proc_t proc_##offset = (volatile cb_proc_t)(struct->offset); \
   proc_##offset();
 

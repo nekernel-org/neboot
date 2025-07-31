@@ -1,7 +1,7 @@
  #
  #	========================================================
  #
- #	CoreBoot
+ #	NeBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
  #
@@ -34,7 +34,7 @@ WAIT=sleep 1
 
 .PHONY: all
 all: firmware-link
-	@echo "[CoreBoot] build done."
+	@echo "[NeBoot] build done."
 
 .PHONY: firmware-link
 firmware-link: firmware-compile

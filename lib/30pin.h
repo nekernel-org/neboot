@@ -12,11 +12,11 @@
 /// @brief 30pin recovery protocol.
 /// @details This file contains the definitions and structures used for the 30pin recovery protocol.
 
-#define CB_30PIN_MAG "TP"
+#define NB_30PIN_MAG "TP"
 #define CP_30PIN_MAG_LEN (2)
 
-#define CB_30PIN_BUFFER_LEN (498)
-#define CB_30PIN_EOP_LEN (11)
+#define NB_30PIN_BUFFER_LEN (498)
+#define NB_30PIN_EOP_LEN (11)
 
 /// @brief 30pin recovery header.
 /// @param mag magic number.
@@ -26,8 +26,8 @@
 struct _cb_tpin_recovery_packet {
   uint8_t mag[CP_30PIN_MAG_LEN];
   uint8_t kind;
-  uint8_t buffer[CB_30PIN_BUFFER_LEN];
-  uint8_t eop[CB_30PIN_EOP_LEN];
+  uint8_t buffer[NB_30PIN_BUFFER_LEN];
+  uint8_t eop[NB_30PIN_EOP_LEN];
 };
 
 /// @brief 30pin recovery packet kinds.

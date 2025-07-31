@@ -10,7 +10,7 @@
 
 struct _cb_file_descriptor;
 
-/// @brief CoreBoot file/device descriptor.
+/// @brief NeBoot file/device descriptor.
 /// @version 1
 typedef struct _cb_file_descriptor {
   int32_t f_kind;

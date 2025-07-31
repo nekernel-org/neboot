@@ -1,4 +1,4 @@
-;; AMD64 CoreBoot Sample program.
+;; AMD64 NeBoot Sample program.
 ;; Written by Amlal EL Mahrouss
 
 [bits 16]

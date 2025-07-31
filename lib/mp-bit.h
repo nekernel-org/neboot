@@ -7,7 +7,7 @@
 #ifndef __BITMANIP_H__
 #define __BITMANIP_H__
 
-/// Name: CoreBoot Bits API.
+/// Name: NeBoot Bits API.
 /// Purpose: Bit manip helpers.
 
 #define cb_set_bit(X, O) X = (1 << O) | X

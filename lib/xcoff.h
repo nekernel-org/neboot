@@ -3,7 +3,7 @@
   Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
 
   File: xcoff.h
-  Purpose: XCOFF for CoreBoot.
+  Purpose: XCOFF for NeBoot.
 
   Revision History:
 

@@ -1,7 +1,7 @@
  #
  #	========================================================
  #
- #	CoreBoot
+ #	NeBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
  #
@@ -24,7 +24,7 @@ EMU=qemu-system-riscv64 -m 4G -smp 2 -machine virt -bios $(FIRMWARE) -d int -dev
 
 .PHONY: all
 all: firmware-link
-	@echo "[CoreBoot] Done."
+	@echo "[NeBoot] Done."
 
 # link (make firmware)
 .PHONY: firmware-link

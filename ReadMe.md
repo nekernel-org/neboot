@@ -4,6 +4,10 @@
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3.0-blue.svg)](LICENSE)
 [![QEMU Tested](https://img.shields.io/badge/QEMU-Tested-success)](#)
 
+# Brief
+
+NeBoot is a cross-platform open implementation of a firmware written in C, designed with modularity and portability in mind.
+
 ## Notice for Doxygen:
 
 Build the documentation using Doxygen's `doxygen` CLI tool.

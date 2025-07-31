@@ -9,10 +9,10 @@
 
 /// BUGS: 0
 
-#define CB_NS16550_COM1 (CB_UART_BASE + 0x4500)
-#define CB_NS16550_COM2 (CB_UART_BASE + 0x4600)
+#define NB_NS16550_COM1 (NB_UART_BASE + 0x4500)
+#define NB_NS16550_COM2 (NB_UART_BASE + 0x4600)
 
-volatile ascii_char_t* const UART0DR = (ascii_char_t*) CB_NS16550_COM1;
+volatile ascii_char_t* const UART0DR = (ascii_char_t*) NB_NS16550_COM1;
 
 /* this file handles the UART */
 

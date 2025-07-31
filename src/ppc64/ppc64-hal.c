@@ -41,7 +41,7 @@ void cb_set_tlb(uint8_t tlb, uint32_t epn, uint64_t rpn, uint8_t perms, uint8_t 
 void cb_init_hw(void) {
   /// amlal:
   /// map VGA framebuffer
-  cb_set_tlb(0, CB_FRAMEBUFFER_ADDR, /* v_addr, 0x0000A0000 */
+  cb_set_tlb(0, NB_FRAMEBUFFER_ADDR, /* v_addr, 0x0000A0000 */
              0x0000A000,             /* p_addr. 0x0000A0000  */
              MAS3_SW | MAS3_SR,      /* perm  type=TLB_MAP_IO */
              MAS2_I | MAS2_G,        /* wimge type=TLB_MAP_IO */
@@ -52,7 +52,7 @@ void cb_init_hw(void) {
 
   // map ccsrbar and uart.
   // at start we execute from esel = 0, so chose something else..
-  cb_set_tlb(1, CB_UART_BASE,   /* v_addr   0xe0000000 see  qemu-ppce500.h */
+  cb_set_tlb(1, NB_UART_BASE,   /* v_addr   0xe0000000 see  qemu-ppce500.h */
              0xfe0000000,       /* p_addr. 0xfe0000000  */
              MAS3_SW | MAS3_SR, /* perm  type=TLB_MAP_IO */
              MAS2_I | MAS2_G,   /* wimge type=TLB_MAP_IO */
@@ -63,7 +63,7 @@ void cb_init_hw(void) {
 
   /// amlal:
   /// map pci base for kernel
-  cb_set_tlb(0, CB_BASE_ADDRESS, /* v_addr, 0xFE008000 */
+  cb_set_tlb(0, NB_BASE_ADDRESS, /* v_addr, 0xFE008000 */
              0xFE0008000,        /* p_addr. 0xfe0000000  */
              MAS3_SW | MAS3_SR,  /* perm  type=TLB_MAP_IO */
              MAS2_I | MAS2_G,    /* wimge type=TLB_MAP_IO */
@@ -74,10 +74,10 @@ void cb_init_hw(void) {
 
   cb_pci_init_tree();
 
-  cb_pci_append_tree("@fb", CB_FRAMEBUFFER_ADDR, 0x0);
+  cb_pci_append_tree("@fb", NB_FRAMEBUFFER_ADDR, 0x0);
   cb_pci_append_tree("@mbci", 0x0, 0x0);  // did not found a MBCI base for now...
-  cb_pci_append_tree("@serial", CB_UART_BASE, 0);
-  cb_pci_append_tree("@pci", CB_BASE_ADDRESS, 0x0);
+  cb_pci_append_tree("@serial", NB_UART_BASE, 0);
+  cb_pci_append_tree("@pci", NB_BASE_ADDRESS, 0x0);
 
   cb_flush_tlb();
 }

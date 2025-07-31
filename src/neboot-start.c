@@ -45,7 +45,7 @@ void cb_start_exec(void) {
 
   // let the hart 0 init our stuff.
   if (hart == 0) {
-    cb_put_string("CB> Welcome to CoreBoot, (c) Amlal EL Mahrouss. Built the ");
+    cb_put_string("CB> Welcome to NeBoot, (c) Amlal EL Mahrouss. Built the ");
     cb_put_string(__DATE__);
     cb_put_string("\r\r\n");
 
@@ -72,7 +72,7 @@ void cb_start_exec(void) {
 
   /// @brief Boots here if LX header matches what we except.
 
-  volatile struct cb_boot_header* boot_hdr = (volatile struct cb_boot_header*) (CB_FLASH_BASE_ADDR);
+  volatile struct cb_boot_header* boot_hdr = (volatile struct cb_boot_header*) (NB_FLASH_BASE_ADDR);
 
   /**
     boot if:
@@ -80,14 +80,14 @@ void cb_start_exec(void) {
       - version matches.
   */
 
-  if (boot_hdr->h_mag[0] == CB_BOOT_MAG_0 && boot_hdr->h_mag[1] == CB_BOOT_MAG_1) {
+  if (boot_hdr->h_mag[0] == NB_BOOT_MAG_0 && boot_hdr->h_mag[1] == NB_BOOT_MAG_1) {
     uint32_t rev = boot_hdr->h_revision;
 
 #ifdef __aarch64__
     rev = __builtin_bswap32(rev);
 #endif
 
-    if (rev != CB_BOOT_VER) {
+    if (rev != NB_BOOT_VER) {
       if (hart == 0) {
         cb_put_string("CB> Can't Boot the StageTwo, LX invalid signature. (CB0003)\r\n");
       }
@@ -113,7 +113,7 @@ void cb_start_exec(void) {
   } else {
     cb_put_string("CB> Trying EPM partition...\r\n");
 
-    part_block_t* blk = cb_parse_partition_block_at((voidptr_t) CB_BOOT_ADDR, EPM_PART_BLK_SZ, 0);
+    part_block_t* blk = cb_parse_partition_block_at((voidptr_t) NB_BOOT_ADDR, EPM_PART_BLK_SZ, 0);
 
     if (blk) {
       cb_pci_append_tree("@stage2-epm", (cb_pci_num_t) blk, sizeof(part_block_t) * blk->num_blocks);

@@ -13,7 +13,7 @@
 
 /* this file handles the UART */
 
-static uint32_t* cb_uart_ptr = (uint32_t*) CB_UART_BASE;
+static uint32_t* cb_uart_ptr = (uint32_t*) NB_UART_BASE;
 
 /// @brief Retrieve character from cb_uart_ptr
 utf_char_t cb_get_char(void) {

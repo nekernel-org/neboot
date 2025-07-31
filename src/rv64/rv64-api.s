@@ -1,6 +1,6 @@
 # ====================================
 #
-#   Amlal EL Mahrouss CoreBoot
+#   Amlal EL Mahrouss NeBoot
 #   (c) Amlal EL Mahrouss all rights reserved.
 #
 #   Purpose: Assembler API for RISC-V

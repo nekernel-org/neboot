@@ -5,7 +5,7 @@
 ------------------------------------------- */
 
 /**
- * @file coreboot-ahci-driver.cc
+ * @file neboot-ahci-driver.cc
  * @author Amlal EL Mahrouss (amlal@nekernel.org)
  * @brief SATA Disk support, via AHCI.
  * @version 0.2
@@ -18,7 +18,7 @@
 #include <lib/boot.h>
 #include <lib/pci-tree.h>
 
-#define CB_AHCI_DRIVER_NAME ("@sata")
+#define NB_AHCI_DRIVER_NAME ("@sata")
 
 /// BUGS: 0
 /// @brief AHCI support for PowerPC.

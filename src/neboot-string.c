@@ -5,7 +5,7 @@
 ------------------------------------------- */
 
 /**
- * @file coreboot-string.c
+ * @file neboot-string.c
  * @author Amlal EL Mahrouss (amlal@nekernel.org)
  * @brief string library.
  * @version 0.1

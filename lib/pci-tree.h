@@ -16,16 +16,16 @@
 #define PCI_INVALID_DATA_U16 ((uint16_t) ~0)
 #define PCI_INVALID_DATA_U32 ((uint32_t) ~0)
 
-#define CB_BASE_ADDRESS (0x20008000) /* PCI base mapped in virtual memory. */
-#define CB_PCI_TREE_BASE (0x802000)  /* The PCI tree base address. */
+#define NB_BASE_ADDRESS (0x20008000) /* PCI base mapped in virtual memory. */
+#define NB_PCI_TREE_BASE (0x802000)  /* The PCI tree base address. */
 
 /* version 1.0 */
-#define CB_PCI_VERSION (0x0100)
+#define NB_PCI_VERSION (0x0100)
 
-#define CB_PCI_DEV_MAGIC (0xfeedd00d)
-#define CB_PCI_INT_SZ sizeof(cb_pci_num_t)
+#define NB_PCI_DEV_MAGIC (0xfeedd00d)
+#define NB_PCI_INT_SZ sizeof(cb_pci_num_t)
 
-#define CB_PCI_NAME_LEN (255U)
+#define NB_PCI_NAME_LEN (255U)
 
 #define PCI_CONFIG_SPACE (4096U)
 
@@ -53,7 +53,7 @@ struct hw_cb_pci_tree {
   cb_pci_num_t d_first_node;
   cb_pci_num_t d_next_sibling;
 
-  cb_pci_char_t d_name[CB_PCI_NAME_LEN];
+  cb_pci_char_t d_name[NB_PCI_NAME_LEN];
 };
 
 /// @brief Init PCI tree.
