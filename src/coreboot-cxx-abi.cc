@@ -4,7 +4,7 @@
 
 ------------------------------------------- */
 
-#include <lib/cxx-abi.h>
+#include <lib/cxx-abi.hpp>
 
 /// BUGS: 0
 
