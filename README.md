@@ -6,7 +6,7 @@
 
 # Brief
 
-NeBoot is a cross-platform open implementation of a firmware written in C, designed with modularity and portability in mind.
+NeBoot is a cross-platform open implementation of the EPM firmware written in C, designed with modularity and portability in mind.
 
 ## Notice for Doxygen:
 
