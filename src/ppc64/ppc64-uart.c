@@ -20,8 +20,7 @@ volatile ascii_char_t* const UART0DR = (ascii_char_t*) NB_NS16550_COM1;
 /// @param
 /// @return
 utf_char_t cb_get_char(void) {
-  while (!(*(((volatile uint8_t*) UART0DR) + 0x05) & 0x01))
-    ;
+  while (!(*(((volatile uint8_t*) UART0DR) + 0x05) & 0x01));
   return (utf_char_t) *UART0DR;
 }
 

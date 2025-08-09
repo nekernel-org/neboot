@@ -16,8 +16,7 @@ static uint8_t* cb_uart_ptr = (uint8_t*) NB_UART_BASE;
 utf_char_t cb_get_char(void) {
   uintptr_t ptr = NB_UART_BASE;
 
-  while (!(*(((volatile uint8_t*) ptr) + 0x05) & 0x01))
-    ;
+  while (!(*(((volatile uint8_t*) ptr) + 0x05) & 0x01));
 
   return (utf_char_t) *cb_uart_ptr;
 }
