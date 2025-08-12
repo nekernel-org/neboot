@@ -21,7 +21,7 @@
 #define NB_AHCI_DRIVER_NAME ("@sata")
 
 /// BUGS: 0
-/// @brief AHCI support for PowerPC.
+/// @brief Generic AHCI support.
 
 /// @brief AHCI HBA port.
 typedef struct cb_hba_port {
