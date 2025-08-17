@@ -1,7 +1,7 @@
  #
  #	========================================================
  #
- #	CoreBoot
+ #	NeBoot
  # 	Date Added: 08/11/2023
  # 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
  #
@@ -35,7 +35,7 @@ IMG_CMD=qemu-img create -f qcow2 epm.img 256M
 
 .PHONY: all
 all: firmware-link
-	@echo "[CoreBoot] build done."
+	@echo "[NeBoot] build done."
 
 .PHONY: firmware-link
 firmware-link: firmware-compile

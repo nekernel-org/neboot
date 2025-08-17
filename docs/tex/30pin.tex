@@ -1,0 +1,73 @@
+
+\documentclass{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\title{\texttt{30Pin}: Technical Specification}
+\author{Amlal EL Mahrouss}
+\date{\today}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{red},
+    showstringspaces=false,
+    breaklines=true
+}
+
+\begin{document}
+
+\maketitle
+
+\section*{File Description}
+\textbf{File:} \texttt{30pin.h} \\
+\textbf{Description:} This header defines the 30pin recovery protocol structures, constants, and packet kinds.
+
+\section{Constants}
+\begin{itemize}[leftmargin=2em]
+    \item \texttt{CB\_30PIN\_MAG} - Magic number identifier for a 30pin packet. Defined as \texttt{"TP"}.
+    \item \texttt{CP\_30PIN\_MAG\_LEN} - Length of the magic number (\texttt{2} bytes).
+    \item \texttt{CB\_30PIN\_BUFFER\_LEN} - Length of the data buffer in the packet (\texttt{498} bytes).
+    \item \texttt{CB\_30PIN\_EOP\_LEN} - Length of the end-of-packet data (\texttt{11} bytes).
+\end{itemize}
+
+\section{Data Structures}
+\subsection{\texttt{cb\_tpin\_recovery\_packet}}
+\begin{lstlisting}[language=C]
+struct _cb_tpin_recovery_packet
+{
+    uint8_t mag[CP_30PIN_MAG_LEN];     // Magic number
+    uint8_t kind;                      // Packet kind identifier
+    uint8_t buffer[NB_30PIN_BUFFER_LEN]; // Packet data buffer
+    uint8_t eop[NB_30PIN_EOP_LEN];     // End-of-packet data
+};
+\end{lstlisting}
+
+\textbf{Typedef:} \texttt{cb\_tpin\_recovery\_packet\_t}
+
+\section{Enumerations}
+\subsection{Packet Kinds}
+Defines the kinds of packets used in the 30pin recovery protocol:
+
+\begin{itemize}[leftmargin=2em]
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_UNKNOWN = 0}
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_BOOT = 1}
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_DATA = 2}
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP = 3}
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP\_ACK = 4}
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP\_NACK = 5}
+\end{itemize}
+
+\end{document}

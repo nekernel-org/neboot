@@ -29,11 +29,11 @@ cb_reset_vector:
 .global cb_start_context
 .global cb_boot_processor_ready
 
-.equ CB_BOOT_ADDR, 0x1030000
+.equ NB_BOOT_ADDR, 0x1030000
 
 cb_start_rom:
-	lis 3, CB_BOOT_ADDR@h
-	addi 3, 3, CB_BOOT_ADDR@l
+	lis 3, NB_BOOT_ADDR@h
+	addi 3, 3, NB_BOOT_ADDR@l
 
 	blr
 

@@ -1,4 +1,4 @@
-;; AMD64 CoreBoot Master Boot Program.
+;; AMD64 NeBoot Master Boot Program.
 ;; Written by Amlal EL Mahrouss
 
 %define ENTRYPOINT 0x00FF
