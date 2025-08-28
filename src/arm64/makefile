@@ -28,7 +28,7 @@ FLAGS_LD= --script=script.lds -o core-boot.elf -nostdlib
 OBJCOPY=aarch64-elf-objcopy
 
 EMU=qemu-system-aarch64
-EMU_FLAGS=-M virt -cpu cortex-a57 -bios $(FIRMWARE) -m 256M -d int -smp 2
+EMU_FLAGS=-M virt -cpu cortex-a57 -bios $(FIRMWARE) -device loader,file=$(STAGE2),addr=0x60000000 -m 4G -d int -d guest_errors
 
 WAIT=sleep 1
 
