@@ -1,9 +1,11 @@
 {
-  "machine": "EPM GENERIC",
-  "type": "Generic",
-  "vendor": "NeKernel.org",
-  "fb": "0x1000000",
-  "boot": "0x4000000",
-  "pci-tree": "0x8002000",
-  "eeprom": "0x0000000"
+    "__pci-tree-meta": true,
+    "__pci-tree-version": 1,
+    "machine": "EPM GENERIC",
+    "type": "Generic",
+    "vendor": "NeKernel.org",
+    "fb": "0x1000000",
+    "boot": "0x4000000",
+    "pci-tree": "0x8002000",
+    "eeprom": "0x0000000"
 }
