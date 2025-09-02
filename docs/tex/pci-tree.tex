@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{The PCI Tree System}
+\author{Amlal El Mahrouss}
+\date{\today}
+
+\usepackage{listings}
+
+\lstset { %
+    language=C++,
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Abstract}
+
+The PCI tree is an architecture designed to abstract away device specific data. One leaf might for instance hold an AHCI's HBA (Host Bus Adapter) into a '/pci-tree/@ahci' for instance. The advantage of this approach is the ability to quickly lookup and recognize a device from a tree given by a firmware at handoff.
+
+\section{The Protocol}
+
+Each leaf has a identification number of '0xfeedd00d', then followed by the version in a binary encoded format (0x1000). The offset and size of the offset and then given by the firmware. A PCI-Tree is assembled by the firmware itself. As the structures are not packed, thus multi-platform portability isn't possible.
+
+\section{Trade-offs}
+
+The trade-offs (portability, complexity) are largely justified by the need of a better and more straightforward way to recognize devices at the firmware level, the PCI tree approach helps us do exactly that.
+
+\subsection{Implementation of a PCI-Tree Leaf}
+
+Language of implementation is the C programming language
+
+\begin{lstlisting}
+struct hw_cb_pci_tree {
+  cb_pci_num_t d_magic;
+  cb_pci_num_t d_version;
+  cb_pci_num_t d_off_props;
+  cb_pci_num_t d_off_struct;
+  cb_pci_num_t d_sz_props;
+  cb_pci_num_t d_sz_struct;
+
+  cb_pci_num_t d_first_node;
+  cb_pci_num_t d_next_sibling;
+
+  cb_pci_char_t d_name[NB_PCI_NAME_LEN];
+};
+
+\end{lstlisting}
+
+\section{Official Implementations}
+
+Below are the official implementations of the PCI-Tree, organized by their programming languages.
+
+\subsection{ISO C}
+
+\begin{ImplC}
+\item {SNU Trusted Base:} https://snu.systems
+\item {NeBoot (NeKernel Boot):} https://github.com/nekernel-org/neboot
+\end{ImplC}
+
+\subsection{ISO C++}
+
+\begin{ImplCxx}
+\item {No Implementation yet}
+\end{ImplCxx}
+
+\subsection{Forth}
+
+\begin{ImplForth}
+\item {No Implementation yet}
+\end{ImplForth}
+
+\end{document}
