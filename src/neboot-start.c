@@ -113,7 +113,8 @@ void cb_start_exec(void) {
   } else {
     cb_put_string("CB> Trying EPM partition...\r\n");
 
-    part_block_t* blk = cb_parse_partition_block_at((voidptr_t) NB_FLASH_BASE_ADDR, EPM_PART_BLK_SZ, 0);
+    part_block_t* blk =
+        cb_parse_partition_block_at((voidptr_t) NB_FLASH_BASE_ADDR, EPM_PART_BLK_SZ, 0);
 
     if (blk) {
       cb_pci_append_tree("@stage2-epm", (cb_pci_num_t) blk, sizeof(part_block_t) * blk->num_blocks);
@@ -144,7 +145,7 @@ void cb_start_exec(void) {
   }
 
   /// end of TODO
-  
+
   while (yes) {
     if (__cb_hart_counter == 0) {
       cb_restart_machine();

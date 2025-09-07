@@ -16,5 +16,9 @@ void cb_restart_machine(void) {
   while (1) {
     asm volatile("wfi");
   }
+#else
+  /// @todo add your reset vector here.
+  while (1)
+    ;
 #endif
 }
