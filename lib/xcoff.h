@@ -49,4 +49,7 @@ typedef struct _xcoff_fork_header {
 typedef xcoff_header_t xcoff_header64_t;
 typedef xcoff_header_t xcoff_header32_t;
 
+xcoff_header_t* xcoff_parse_metadata(void);
+xcoff_fork_header_t* xcoff_parse_fork_metadata(void);
+
 #endif  // ifndef __XCOFF__
