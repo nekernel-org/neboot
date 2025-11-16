@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024-2025, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024-2025, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -8,7 +8,7 @@
 
 /// @file pci-tree.h
 /// @brief PCI Tree layout.
-/// @author Amlal EL Mahrouss
+/// @author Amlal El Mahrouss
 
 #include <lib/boot.h>
 
@@ -42,7 +42,7 @@ typedef uint8_t cb_pci_device_t;
 
 /// @brief hardware tree header
 /// used by guest to resolve hardware peripherals.
-struct hw_cb_pci_tree {
+struct hw_nb_pci_tree {
   cb_pci_num_t d_magic;
   cb_pci_num_t d_version;
   cb_pci_num_t d_off_props;

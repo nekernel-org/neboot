@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -18,7 +18,7 @@
 // @brief Start file // This is where the firmware starts it's initialization //
 // code. //
 
-// @author Amlal EL Mahrouss //
+// @author Amlal El Mahrouss //
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,23 +29,23 @@ extern int cb_boot_processor_ready;
 
 /// @brief hardware thread counter (rv64 only)
 #ifdef __COMPILE_RISCV__
-uint64_t __cb_hart_counter = 0UL;
+uint64_t __nb_hart_counter = 0UL;
 #endif
 
 /// @brief Start executing the firmware.
 /// @param
 void cb_start_exec(void) {
 #ifndef __COMPILE_RISCV__
-  static uint64_t __cb_hart_counter = 0UL;
+  static uint64_t __nb_hart_counter = 0UL;
 #endif
 
-  ++__cb_hart_counter;
+  ++__nb_hart_counter;
 
-  uintptr_t hart = __cb_hart_counter;
+  uintptr_t hart = __nb_hart_counter;
 
   // let the hart 0 init our stuff.
   if (hart == 0) {
-    cb_put_string("CB> Welcome to NeBoot, (c) Amlal EL Mahrouss. Built the ");
+    cb_put_string("CB> Welcome to NeBoot, (c) Amlal El Mahrouss. Built the ");
     cb_put_string(__DATE__);
     cb_put_string("\r\r\n");
 
@@ -147,7 +147,7 @@ void cb_start_exec(void) {
   /// end of TODO
 
   while (yes) {
-    if (__cb_hart_counter == 0) {
+    if (__nb_hart_counter == 0) {
       cb_restart_machine();
     }
   }

@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -8,21 +8,21 @@
 
 #include <lib/boot.h>
 
-struct _cb_file_descriptor;
+struct _nb_file_descriptor;
 
 /// @brief NeBoot file/device descriptor.
 /// @version 1
-typedef struct _cb_file_descriptor {
+typedef struct _nb_file_descriptor {
   int32_t f_kind;
   int32_t f_filesystem;
 
-  size_t (*f_write)(void* ptr, size_t size, size_t nitems, struct _cb_file_descriptor* self);
-  size_t (*f_read)(void* ptr, size_t size, size_t nitems, struct _cb_file_descriptor* self);
-  int (*f_seek)(struct _cb_file_descriptor* self, size_t off, int whence);
-  int (*f_tell)(struct _cb_file_descriptor* self);
-  int (*f_rewind)(struct _cb_file_descriptor* self);
-  int (*f_eof)(struct _cb_file_descriptor* self);
-  int (*f_close)(struct _cb_file_descriptor* self);
+  size_t (*f_write)(void* ptr, size_t size, size_t nitems, struct _nb_file_descriptor* self);
+  size_t (*f_read)(void* ptr, size_t size, size_t nitems, struct _nb_file_descriptor* self);
+  int (*f_seek)(struct _nb_file_descriptor* self, size_t off, int whence);
+  int (*f_tell)(struct _nb_file_descriptor* self);
+  int (*f_rewind)(struct _nb_file_descriptor* self);
+  int (*f_eof)(struct _nb_file_descriptor* self);
+  int (*f_close)(struct _nb_file_descriptor* self);
 } cb_file_descriptor_t;
 
 /// @brief Grabs a new device reference.

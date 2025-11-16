@@ -1,17 +1,17 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
 /**
  * @file neboot-pci-tree.c
- * @author Amlal EL Mahrouss (amlal@nekernel.org)
+ * @author Amlal El Mahrouss (amlal@nekernel.org)
  * @brief PCI tree implementation.
  * @version 0.1
  * @date 2024-01-22
  *
- * @copyright Copyright (c) 2024 Amlal EL Mahrouss
+ * @copyright Copyright (c) 2024 Amlal El Mahrouss
  *
  */
 
@@ -23,15 +23,15 @@
 /// Standard Root table (Mahrouss Table)
 #define NB_PCI_ROOT_NAME "/pci-tree/@/"
 
-static struct hw_cb_pci_tree* cb_base_tree   = nil;
-static struct hw_cb_pci_tree* cb_latest_tree = nil;
-static struct hw_cb_pci_tree* cb_last_tree   = nil;
+static struct hw_nb_pci_tree* cb_base_tree   = nil;
+static struct hw_nb_pci_tree* cb_latest_tree = nil;
+static struct hw_nb_pci_tree* cb_last_tree   = nil;
 
 /// \brief Init the PCI device tree structure.
 /// \return if it already exists -> false
 /// Otherwise true.
 boolean cb_pci_init_tree(void) {
-  cb_base_tree = (struct hw_cb_pci_tree*) (NB_PCI_TREE_BASE);
+  cb_base_tree = (struct hw_nb_pci_tree*) (NB_PCI_TREE_BASE);
 
   // huh? anyway let's ignore it then.
   if (cb_base_tree->d_magic != NB_PCI_DEV_MAGIC) {
@@ -46,7 +46,7 @@ boolean cb_pci_init_tree(void) {
     cb_base_tree->d_off_struct   = 0;
     cb_base_tree->d_version      = NB_PCI_VERSION;
 
-    cb_base_tree->d_next_sibling = (cb_pci_num_t) (cb_base_tree + sizeof(struct hw_cb_pci_tree));
+    cb_base_tree->d_next_sibling = (cb_pci_num_t) (cb_base_tree + sizeof(struct hw_nb_pci_tree));
     cb_base_tree->d_first_node   = (cb_pci_num_t) cb_base_tree;
 
     cb_put_string(">> Append root device: " NB_PCI_ROOT_NAME "\r\n");
@@ -64,12 +64,12 @@ boolean cb_pci_init_tree(void) {
 boolean cb_pci_append_tree(const caddr_t name, cb_pci_num_t struct_ptr, cb_pci_num_t struct_sz) {
   if (!name || *name == 0 || cb_latest_tree == nil) return no;
 
-  struct hw_cb_pci_tree* cb_pci_tree = (struct hw_cb_pci_tree*) (cb_latest_tree);
+  struct hw_nb_pci_tree* cb_pci_tree = (struct hw_nb_pci_tree*) (cb_latest_tree);
 
   while (cb_pci_tree->d_magic == NB_PCI_DEV_MAGIC) {
     if (strcmp(cb_pci_tree->d_name, name) == 0) return no;
 
-    cb_pci_tree = (struct hw_cb_pci_tree*) (cb_pci_tree + sizeof(struct hw_cb_pci_tree));
+    cb_pci_tree = (struct hw_nb_pci_tree*) (cb_pci_tree + sizeof(struct hw_nb_pci_tree));
   }
 
   cb_pci_tree->d_magic = NB_PCI_DEV_MAGIC;
@@ -82,7 +82,7 @@ boolean cb_pci_append_tree(const caddr_t name, cb_pci_num_t struct_ptr, cb_pci_n
   cb_pci_tree->d_sz_props   = 0;
   cb_pci_tree->d_version    = NB_PCI_VERSION;
 
-  cb_pci_tree->d_next_sibling = (cb_pci_num_t) (cb_pci_tree + sizeof(struct hw_cb_pci_tree));
+  cb_pci_tree->d_next_sibling = (cb_pci_num_t) (cb_pci_tree + sizeof(struct hw_nb_pci_tree));
   cb_pci_tree->d_first_node   = (cb_pci_num_t) cb_latest_tree;
 
   cb_latest_tree = cb_pci_tree;

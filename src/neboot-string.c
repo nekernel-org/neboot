@@ -1,17 +1,17 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
 /**
  * @file neboot-string.c
- * @author Amlal EL Mahrouss (amlal@nekernel.org)
+ * @author Amlal El Mahrouss (amlal@nekernel.org)
  * @brief string library.
  * @version 0.1
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024 Amlal EL Mahrouss
+ * @copyright Copyright (c) 2024 Amlal El Mahrouss
  *
  */
 

@@ -1,5 +1,5 @@
 ;; AMD64 NeBoot Sample program.
-;; Written by Amlal EL Mahrouss
+;; Written by Amlal El Mahrouss
 
 [bits 16]
 [org 0x7c00]
