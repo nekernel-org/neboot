@@ -3,7 +3,7 @@
  #
  #	NeBoot
  # 	Date Added: 08/11/2023
- # 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
+ # 	Copyright 2024, Amlal El Mahrouss, licensed under Apache 2.0.
  #
  # 	========================================================
  #

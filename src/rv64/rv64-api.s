@@ -1,7 +1,7 @@
 # ====================================
 #
 #   Amlal El Mahrouss NeBoot
-#   (c) Amlal El Mahrouss all rights reserved.
+#   (c) Amlal El Mahrouss licensed under Apache 2.0.
 #
 #   Purpose: Assembler API for RISC-V
 #
