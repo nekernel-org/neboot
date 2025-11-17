@@ -26,4 +26,4 @@ Build the documentation using Doxygen's `doxygen` CLI tool.
     cd neboot
 ```
 
-###### Copyright 2024-2025, Amlal El Mahrouss and NeKernel.org Contributors, all rights reserved.
+###### Copyright 2024-2025, Amlal El Mahrouss and NeKernel.org Contributors, licensed under Apache 2.0.

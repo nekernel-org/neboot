@@ -2,7 +2,7 @@
  *	========================================================
  *
  *	NeBoot
- * 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
+ * 	Copyright 2024, Amlal El Mahrouss, licensed under Apache 2.0.
  *
  *  	Purpose: Startup code for RISC-V.
  *

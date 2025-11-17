@@ -3,7 +3,7 @@
 # interrupts: 1M - 2048
 # brief: jump to r16 which contains the code to jump on.
 
-# Copyright 2024, Amlal El Mahrouss, all rights reserved.
+# Copyright 2024, Amlal El Mahrouss, licensed under Apache 2.0.
 
 export .text __start
     lda r15, 0x7c00
