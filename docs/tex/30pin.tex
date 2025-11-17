@@ -14,8 +14,8 @@
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
 
-\title{\texttt{30Pin}: Technical Specification}
-\author{Amlal EL Mahrouss}
+\title{\texttt{30Pin} Technical Specification}
+\author{Amlal El Mahrouss}
 \date{\today}
 
 \lstset{
@@ -37,25 +37,25 @@
 
 \section{Constants}
 \begin{itemize}[leftmargin=2em]
-    \item \texttt{CB\_30PIN\_MAG} - Magic number identifier for a 30pin packet. Defined as \texttt{"TP"}.
-    \item \texttt{CP\_30PIN\_MAG\_LEN} - Length of the magic number (\texttt{2} bytes).
-    \item \texttt{CB\_30PIN\_BUFFER\_LEN} - Length of the data buffer in the packet (\texttt{498} bytes).
-    \item \texttt{CB\_30PIN\_EOP\_LEN} - Length of the end-of-packet data (\texttt{11} bytes).
+    \item \texttt{NB\_30PIN\_MAG} - Magic number identifier for a 30pin packet. Defined as \texttt{"TP"}.
+    \item \texttt{NB\_30PIN\_MAG\_LEN} - Length of the magic number (\texttt{2} bytes).
+    \item \texttt{NB\_30PIN\_BUFFER\_LEN} - Length of the data buffer in the packet (\texttt{498} bytes).
+    \item \texttt{NB\_30PIN\_EOP\_LEN} - Length of the end-of-packet data (\texttt{11} bytes).
 \end{itemize}
 
 \section{Data Structures}
-\subsection{\texttt{cb\_tpin\_recovery\_packet}}
+\subsection{\texttt{NB\_tpin\_recovery\_packet}}
 \begin{lstlisting}[language=C]
-struct _cb_tpin_recovery_packet
+struct _nb_tpin_recovery_packet
 {
-    uint8_t mag[CP_30PIN_MAG_LEN];     // Magic number
+    uint8_t mag[NB_30PIN_MAG_LEN];     // Magic number
     uint8_t kind;                      // Packet kind identifier
     uint8_t buffer[NB_30PIN_BUFFER_LEN]; // Packet data buffer
     uint8_t eop[NB_30PIN_EOP_LEN];     // End-of-packet data
 };
 \end{lstlisting}
 
-\textbf{Typedef:} \texttt{cb\_tpin\_recovery\_packet\_t}
+\textbf{Typedef:} \texttt{NB\_tpin\_recovery\_packet\_t}
 
 \section{Enumerations}
 \subsection{Packet Kinds}

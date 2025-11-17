@@ -2,7 +2,7 @@
  *	========================================================
  *
  *	NeBoot
- * 	Copyright 2024, Amlal EL Mahrouss, all rights reserved.
+ * 	Copyright 2024, Amlal El Mahrouss, all rights reserved.
  *
  *  	Purpose: Startup code for RISC-V.
  *
@@ -33,7 +33,7 @@ cb_reset_vector:
 	.cfi_endproc
 
 cb_start_exec_asm:
-	lw t0, __cb_hart_counter
+	lw t0, __nb_hart_counter
 	lw t1, cb_boot_processor_ready
 
 	not t0, t0
@@ -110,5 +110,5 @@ cb_stack_list:
 cb_stack_align:
 	.word 0x8000
 
-__cb_max_harts:
+__nb_max_harts:
 	.word 2

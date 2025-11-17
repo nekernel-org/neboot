@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -180,7 +180,7 @@ typedef void (*cb_proc_t)();
 typedef char ascii_char_t;
 
 /// @brief Linear Executable Header
-/// @author Amlal EL Mahrouss (Amlal EL Mahrouss)
+/// @author Amlal El Mahrouss (Amlal El Mahrouss)
 struct __attribute__((aligned(4))) cb_boot_header {
   const ascii_char_t h_mag[2];         // magic number
   const ascii_char_t h_name[10];       // operating system name

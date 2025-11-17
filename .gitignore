@@ -3,6 +3,12 @@
 
 .vscode
 
+*.fls
+*.pdf
+*.gz
+*.aux
+*.fdb_*
+
 html/
 latex/
 

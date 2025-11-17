@@ -1,17 +1,17 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
 /**
  * @file neboot-ahci-driver.cc
- * @author Amlal EL Mahrouss (amlal@nekernel.org)
+ * @author Amlal El Mahrouss (amlal@nekernel.org)
  * @brief SATA Disk support, via AHCI.
  * @version 0.2
  * @date 2024-01-16
  *
- * @copyright Copyright (c) 2024-2025, Amlal EL Mahrouss.
+ * @copyright Copyright (c) 2024-2025, Amlal El Mahrouss.
  *
  */
 

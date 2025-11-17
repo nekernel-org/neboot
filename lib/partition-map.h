@@ -1,6 +1,6 @@
 /* -------------------------------------------
 
-  Copyright (C) 2024-2025, Amlal EL Mahrouss, all rights reserved.
+  Copyright (C) 2024-2025, Amlal El Mahrouss, all rights reserved.
 
 ------------------------------------------- */
 
@@ -87,7 +87,7 @@ enum {
   EPM_LINUX       = 0x8f,
   EPM_BSD         = 0x9f,
   EPM_NEKERNEL_OS = 0x1f,
-  EPM_SNU_OS      = 0x2f,
+  EPM_LEGACY_OS      = 0x2f,
 };
 
 /// @brief check for supported filesystem.

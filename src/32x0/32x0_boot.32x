@@ -3,7 +3,7 @@
 ;; interrupts: 0x800 (much like the 64x0)
 ;; brief: jump to main
 
-;; Copyright 2024, Amlal EL Mahrouss, all rights reserved.
+;; Copyright 2024, Amlal El Mahrouss, all rights reserved.
 
 %def ROMBOOT_BASE $1000
 
