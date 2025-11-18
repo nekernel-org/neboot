@@ -45,28 +45,28 @@ void cb_start_exec(void) {
 
   // let the hart 0 init our stuff.
   if (hart == 0) {
-    cb_put_string("CB> Welcome to NeBoot, (c) Amlal El Mahrouss. Built the ");
+    cb_put_string("NB> Welcome to NeBoot, (c) Amlal El Mahrouss. Built the ");
     cb_put_string(__DATE__);
     cb_put_string("\r\r\n");
 
 #ifdef __COMPILE_POWERPC__
-    cb_put_string("CB> CPU: PowerPC 64-bit Based SoC.\r\r\n");
+    cb_put_string("NB> CPU: PowerPC 64-bit Based SoC.\r\r\n");
 #endif  // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_AMD64__
-    cb_put_string("CB> CPU: x64 Based SoC.\r\r\n");
+    cb_put_string("NB> CPU: x64 Based SoC.\r\r\n");
 #endif  // __COMPILE_AMD64__
 
 #ifdef __COMPILE_ARM64__
-    cb_put_string("CB> CPU: AArch64 Based SoC.\r\r\n");
+    cb_put_string("NB> CPU: AArch64 Based SoC.\r\r\n");
 #endif  // __COMPILE_ARM64__
 
 #ifdef __COMPILE_ARM32__
-    cb_put_string("CB> CPU: AArch32 Based SoC.\r\r\n");
+    cb_put_string("NB> CPU: AArch32 Based SoC.\r\r\n");
 #endif  // __COMPILE_ARM64__
 
 #ifdef __COMPILE_RISCV__
-    cb_put_string("CB> CPU: RV64 Based SoC.\r\r\n");
+    cb_put_string("NB> CPU: RV64 Based SoC.\r\r\n");
 #endif  // __COMPILE_RISCV__
   }
 
@@ -89,18 +89,18 @@ void cb_start_exec(void) {
 
     if (rev != NB_BOOT_VER) {
       if (hart == 0) {
-        cb_put_string("CB> Can't Boot the StageTwo, LX invalid signature. (CB0003)\r\n");
+        cb_put_string("NB> Can't Boot the StageTwo, LX invalid signature. (CB0003)\r\n");
       }
     } else {
       if (hart == 0) {
         cb_pci_append_tree("@stage2-lx", (cb_pci_num_t) boot_hdr, sizeof(struct cb_boot_header));
 
-        cb_put_string("CB> Executing StageTwo: ");
+        cb_put_string("NB> Executing StageTwo: ");
         cb_put_string((const char*) boot_hdr->h_name);
         cb_put_char('\r');
         cb_put_char('\n');
 
-        // printf("CB> address: %x\n", boot_hdr->h_start_address);
+        // printf("NB> address: %x\n", boot_hdr->h_start_address);
       }
 
       if (boot_hdr->h_start_address != 0) {
@@ -108,10 +108,10 @@ void cb_start_exec(void) {
         cb_start_context(boot_hdr->h_start_address);
       }
 
-      cb_put_string("CB> StageTwo has returned? (CB0002)\r\n");
+      cb_put_string("NB> StageTwo has returned? (CB0002)\r\n");
     }
   } else {
-    cb_put_string("CB> Trying EPM partition...\r\n");
+    cb_put_string("NB> Trying EPM partition...\r\n");
 
     part_block_t* blk =
         cb_parse_partition_block_at((voidptr_t) NB_FLASH_BASE_ADDR, EPM_PART_BLK_SZ, 0);
@@ -133,14 +133,14 @@ void cb_start_exec(void) {
         cb_start_context((uintptr_t) (voidptr_t) blk + start_lba);
 
         if (hart == 1) {
-          cb_put_string("CB> Can't boot to StageTwo. (CB0001)\r\n");
+          cb_put_string("NB> Can't boot to StageTwo. (CB0001)\r\n");
         }
       }
     }
 
     if (hart == 1) {
       cb_put_string(
-          "CB> Can't boot to StageTwo via EPM, no bootable partition blocks found. (CB0001)\r\n");
+          "NB> Can't boot to StageTwo via EPM, no bootable partition blocks found. (CB0001)\r\n");
     }
   }
 
