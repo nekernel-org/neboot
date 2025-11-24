@@ -7,8 +7,6 @@
 
 #pragma once
 
-#include <lib/boot.h>
-
 #define DSO_MAX_OBJECTS (128)
 
 struct atexit_func_entry_t final {
