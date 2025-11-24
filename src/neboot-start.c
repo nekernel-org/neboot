@@ -106,6 +106,7 @@ void cb_start_exec(void) {
       if (boot_hdr->h_start_address != 0) {
         cb_boot_processor_ready = 1;
         cb_start_context(boot_hdr->h_start_address);
+        cb_boot_processor_ready = 0;
       }
 
       cb_put_string("NB> StageTwo has returned? (CB0002)\r\n");
@@ -131,6 +132,7 @@ void cb_start_exec(void) {
 
         cb_boot_processor_ready = 1;
         cb_start_context((uintptr_t) (voidptr_t) blk + start_lba);
+        cb_boot_processor_ready = 0;
 
         if (hart == 1) {
           cb_put_string("NB> Can't boot to StageTwo. (CB0001)\r\n");
