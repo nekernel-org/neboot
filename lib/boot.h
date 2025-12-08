@@ -11,6 +11,13 @@
 /// @brief NeBoot types, data structures, and standard library.
 ///
 
+#ifdef __unix__
+#undef __unix__
+#define __unix__ 7
+#endif  // !__unix__
+
+#define __mpboot__ __unix__
+
 typedef __UINTPTR_TYPE__ uintptr_t;
 typedef __UINT32_TYPE__  phys_addr_t;
 
@@ -20,13 +27,6 @@ typedef unsigned long long int uint64_t;
 typedef unsigned               uint32_t;
 typedef unsigned short         uint16_t;
 typedef unsigned char          uint8_t;
-
-#ifdef __unix__
-#undef __unix__
-#define __unix__ 7
-#endif  // !__unix__
-
-#define __mpboot__ __unix__
 
 typedef __INTPTR_TYPE__ intptr_t;
 
@@ -52,6 +52,16 @@ typedef ptrtype_t        size_t;
 #define null ((voidptr_t) 0)
 #endif  // ifndef null
 
+/// C23 introduces `nullptr`: https://en.cppreference.com/w/c/language/nullptr.html
+#if __STDC_VERSION__ < 202311L
+#define nullptr ((struct nullptr_*)null)
+
+struct nullptr_ { char __nullv; };
+typedef struct nullptr_* nullptr_t;
+#endif
+
+#define auto_type void*
+
 #define __no 0
 #define __yes 1
 
@@ -68,6 +78,10 @@ typedef ptrtype_t        size_t;
 
 #define NB_RESTART 0
 #define NB_SHUTDOWN 1
+
+#ifndef asm
+#define asm __asm
+#endif // ifndef asm
 
 #define __COPYRIGHT(s) /* unused */
 
@@ -93,7 +107,7 @@ typedef ptrtype_t        size_t;
 #define NB_BOOT_ADDR 0x1030000
 #define NB_BOOT_ADDR_STR "0x1030000"
 #define NB_FRAMEBUFFER_ADDR 0x40000000L
-#define NB_FLASH_BASE_ADDR 0x60000000
+#define NB_FLASH_BASE_ADDR 0x08000000
 
 static inline void __sync_synchronize(void) {
   /// leave it as is.
@@ -112,23 +126,32 @@ static inline void __sync_synchronize(void) {
 
 #define NB_BOOT_VER 0x101
 
+#ifndef _Nonnull
+#define _Nonnull
+#endif // ifndef _Nonnull
+
 #define NB_BOOT_CALL(struct, offset)                                       \
   volatile cb_proc_t proc_##offset = (volatile cb_proc_t)(struct->offset); \
   proc_##offset();
 
-/// @brief floating point representation (IEE 7554) in a C structure
+
+
+/// @brief Binary64 representation (IEE 7554) in a C structure
 typedef union {
   struct {
-    char    sign;
-    int32_t mantissa;
-    int16_t exponent;
+    char    __sign;
+    int32_t __mantissa;
+    int16_t __exponent;
   };
 
-  float f;
-} float_t;
+  float __fv;
+} __attribute__((packed)) binary64_t;
 
 /// \brief UTF-32 character
 typedef uint32_t utf_char_t;
+
+/// \brief ASCII character
+typedef char ascii_char_t;
 
 /// @brief panic the entire system.
 /// @param reason why text.
@@ -140,7 +163,7 @@ void cb_update_power_status(boolean restart);
 /// @brief puts a string in serial
 /// @param text
 /// @return
-size_t cb_put_string(const char* text);
+size_t cb_put_string(const ascii_char_t* _Nonnull text);
 
 /// @brief gets a char from serial
 /// @param
@@ -166,13 +189,13 @@ void cb_print_name(void);
 /// @brief String length getter
 /// @param str the string.
 /// @return
-size_t strlen(caddr_t str);
+size_t strlen(_Nonnull caddr_t str);
 
 /// @brief Compare two strings.
 /// @param src source string
 /// @param cmp string to compare.
 /// @return
-size_t strcmp(caddr_t src, caddr_t cmp);
+size_t strcmp(_Nonnull caddr_t src, _Nonnull caddr_t cmp);
 
 typedef void (*cb_proc_t)();
 
