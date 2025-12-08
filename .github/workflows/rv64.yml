@@ -1,10 +1,10 @@
-name: FW CI (RV64)
+name: FW CI (RV64, develop)
 
 on:
   push:
-    branches: [ "stable" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "stable" ]
+    branches: [ "develop" ]
 
 jobs:
   build:
