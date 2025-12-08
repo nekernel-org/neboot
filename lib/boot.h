@@ -126,6 +126,10 @@ static inline void __sync_synchronize(void) {
 
 #define NB_BOOT_VER 0x101
 
+#ifndef _Nonnull
+#define _Nonnull
+#endif // ifndef _Nonnull
+
 #define NB_BOOT_CALL(struct, offset)                                       \
   volatile cb_proc_t proc_##offset = (volatile cb_proc_t)(struct->offset); \
   proc_##offset();
