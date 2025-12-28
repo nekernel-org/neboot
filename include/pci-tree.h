@@ -1,8 +1,7 @@
-/* -------------------------------------------
-
-  Copyright (C) 2024-2025, Amlal El Mahrouss, licensed under Apache 2.0.
-
-------------------------------------------- */
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
 #pragma once
 
@@ -10,7 +9,7 @@
 /// @brief PCI Tree layout.
 /// @author Amlal El Mahrouss
 
-#include <lib/boot.h>
+#include <include/boot.h>
 
 #define PCI_INVALID_DATA_U8 ((uint8_t) ~0)
 #define PCI_INVALID_DATA_U16 ((uint16_t) ~0)

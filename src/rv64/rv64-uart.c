@@ -1,11 +1,10 @@
-/* -------------------------------------------
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
-
-------------------------------------------- */
-
-#include <lib/boot.h>
-#include <lib/string.h>
+#include <include/boot.h>
+#include <include/string.h>
 
 /// BUGS: 0
 
@@ -16,8 +15,7 @@ static uint8_t* cb_uart_ptr = (uint8_t*) NB_UART_BASE;
 utf_char_t cb_get_char(void) {
   uintptr_t ptr = NB_UART_BASE;
 
-  while (!(*(((volatile uint8_t*) ptr) + 0x05) & 0x01))
-    ;
+  while (!(*(((volatile uint8_t*) ptr) + 0x05) & 0x01));
 
   return (utf_char_t) *cb_uart_ptr;
 }

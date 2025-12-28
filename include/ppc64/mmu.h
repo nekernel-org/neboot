@@ -6,7 +6,7 @@
 #define _PPC_MMU_H_
 
 #ifndef __ASSEMBLY__
-#include <lib/boot.h>
+#include <include/boot.h>
 
 /* Hardware Page Table Entry */
 typedef struct _PTE {
@@ -226,7 +226,7 @@ extern void print_bats(void);
 #define BATU_SIZE(x) (1ULL << (fls((x & BATU_BL_MAX) >> 2) + 17))
 
 /* bytes into BATU_BL */
-#define TO_BATU_BL(x) (uint32_t)((((1ull << __ilog2_u64((uint64_t) x)) / (128 * 1024)) - 1) * 4)
+#define TO_BATU_BL(x) (uint32_t) ((((1ull << __ilog2_u64((uint64_t) x)) / (128 * 1024)) - 1) * 4)
 
 /* Used to set up SDR1 register */
 #define HASH_TABLE_SIZE_64K 0x00010000
@@ -402,7 +402,7 @@ extern void print_bats(void);
 #define MAS0_TLBSEL(x) (((x) << 28) & MAS0_TLBSEL_MSK)
 #define MAS0_ESEL_MSK 0x0FFF0000
 #define MAS0_ESEL(x) (((x) << 16) & MAS0_ESEL_MSK)
-#define MAS0_NV(x) ((x) &0x00000FFF)
+#define MAS0_NV(x) ((x) & 0x00000FFF)
 
 #define MAS1_VALID 0x80000000
 #define MAS1_IPROT 0x40000000
@@ -454,8 +454,8 @@ extern void print_bats(void);
 #define FSL_BOOKE_MAS1(v, iprot, tid, ts, tsize)                                   \
   ((((v) << 31) & MAS1_VALID) | (((iprot) << 30) & MAS1_IPROT) | (MAS1_TID(tid)) | \
    (((ts) << 12) & MAS1_TS) | (MAS1_TSIZE(tsize)))
-#define FSL_BOOKE_MAS2(epn, wimge) (((epn) &MAS3_RPN) | (wimge))
-#define FSL_BOOKE_MAS3(rpn, user, perms) (((rpn) &MAS3_RPN) | (user) | (perms))
+#define FSL_BOOKE_MAS2(epn, wimge) (((epn) & MAS3_RPN) | (wimge))
+#define FSL_BOOKE_MAS3(rpn, user, perms) (((rpn) & MAS3_RPN) | (user) | (perms))
 #define FSL_BOOKE_MAS7(rpn) (((uint64_t) (rpn)) >> 32)
 
 #define BOOKE_PAGESZ_1K 0
@@ -521,11 +521,13 @@ extern uint64_t tlb_map_range(ulong_t v_addr, phys_addr_t p_addr, uint64_t size,
 extern void write_tlb(uint32_t _mas0, uint32_t _mas1, uint32_t _mas2, uint32_t _mas3,
                       uint32_t _mas7);
 
-#define SET_TLB_ENTRY(_tlb, _epn, _rpn, _perms, _wimge, _ts, _esel, _sz, _iprot)            \
-  {                                                                                         \
-    .mas0 = FSL_BOOKE_MAS0(_tlb, _esel, 0), .mas1 = FSL_BOOKE_MAS1(1, _iprot, 0, _ts, _sz), \
-    .mas2 = FSL_BOOKE_MAS2(_epn, _wimge), .mas3 = FSL_BOOKE_MAS3(_rpn, 0, _perms),          \
-    .mas7 = FSL_BOOKE_MAS7(_rpn),                                                           \
+#define SET_TLB_ENTRY(_tlb, _epn, _rpn, _perms, _wimge, _ts, _esel, _sz, _iprot) \
+  {                                                                              \
+      .mas0 = FSL_BOOKE_MAS0(_tlb, _esel, 0),                                    \
+      .mas1 = FSL_BOOKE_MAS1(1, _iprot, 0, _ts, _sz),                            \
+      .mas2 = FSL_BOOKE_MAS2(_epn, _wimge),                                      \
+      .mas3 = FSL_BOOKE_MAS3(_rpn, 0, _perms),                                   \
+      .mas7 = FSL_BOOKE_MAS7(_rpn),                                              \
   }
 
 struct fsl_e_tlb_entry {
@@ -621,10 +623,10 @@ extern int                    num_tlb_entries;
 
 /* Some handy macros */
 
-#define EPN(e) ((e) &0xfffffc00)
+#define EPN(e) ((e) & 0xfffffc00)
 #define TLB0(epn, sz) ((EPN((epn)) | (sz) | TLB_VALID))
-#define TLB1(rpn, erpn) (((rpn) &0xfffffc00) | (erpn))
-#define TLB2(a) ((a) &0x00000fbf)
+#define TLB1(rpn, erpn) (((rpn) & 0xfffffc00) | (erpn))
+#define TLB2(a) ((a) & 0x00000fbf)
 
 #define tlbtab_start \
   mflr r1;           \

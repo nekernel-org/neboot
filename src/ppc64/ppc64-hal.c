@@ -1,14 +1,13 @@
-/* -------------------------------------------
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
+#include <include/ppc64/mmu.h>
+#include <include/ppc64/processor.h>
 
-------------------------------------------- */
-
-#include <lib/ppc64/mmu.h>
-#include <lib/ppc64/processor.h>
-
-#include <lib/boot.h>
-#include <lib/pci-tree.h>
+#include <include/boot.h>
+#include <include/pci-tree.h>
 
 void cb_write_tlb(uint32_t mas0, uint32_t mas1, uint32_t mas2, uint32_t mas3, uint32_t mas7) {
   mtspr(MAS0, mas0);

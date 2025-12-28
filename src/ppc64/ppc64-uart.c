@@ -1,11 +1,10 @@
-/* -------------------------------------------
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
-
-------------------------------------------- */
-
-#include <lib/boot.h>
-#include <lib/string.h>
+#include <include/boot.h>
+#include <include/string.h>
 
 /// BUGS: 0
 
@@ -20,8 +19,7 @@ volatile ascii_char_t* const UART0DR = (ascii_char_t*) NB_NS16550_COM1;
 /// @param
 /// @return
 utf_char_t cb_get_char(void) {
-  while (!(*(((volatile uint8_t*) UART0DR) + 0x05) & 0x01))
-    ;
+  while (!(*(((volatile uint8_t*) UART0DR) + 0x05) & 0x01));
   return (utf_char_t) *UART0DR;
 }
 

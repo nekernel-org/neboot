@@ -1,10 +1,9 @@
-/* -------------------------------------------
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
-
-------------------------------------------- */
-
-#include <lib/partition-map.h>
+#include <include/partition-map.h>
 
 bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba,
                                       size_t* start_lba, size_t* sector_sz) {

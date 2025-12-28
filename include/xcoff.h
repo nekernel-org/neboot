@@ -1,20 +1,12 @@
-/* -------------------------------------------
-
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
-
-  File: xcoff.h
-  Purpose: XCOFF for NeBoot.
-
-  Revision History:
-
-  04/07/24: Added file (amlel)
-
-------------------------------------------- */
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
 #ifndef __XCOFF__
 #define __XCOFF__
 
-#include <lib/boot.h>
+#include <include/boot.h>
 
 #define XCOFF_MAG 0x01F7
 
@@ -49,7 +41,7 @@ typedef struct _xcoff_fork_header {
 typedef xcoff_header_t xcoff_header64_t;
 typedef xcoff_header_t xcoff_header32_t;
 
-xcoff_header_t* xcoff_parse_metadata(void);
+xcoff_header_t*      xcoff_parse_metadata(void);
 xcoff_fork_header_t* xcoff_parse_fork_metadata(void);
 
 #endif  // ifndef __XCOFF__

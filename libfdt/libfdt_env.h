@@ -1,13 +1,12 @@
-/* -------------------------------------------
-
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
-
-------------------------------------------- */
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
 #ifndef __NB_FDT_H__
 #define __NB_FDT_H__
 
-#include <lib/boot.h>
+#include <include/boot.h>
 
 #ifdef __USE_SPARSE__
 #define FDT_FORCE __attribute__((force))

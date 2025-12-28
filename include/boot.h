@@ -1,8 +1,7 @@
-/* -------------------------------------------
-
-  Copyright (C) 2024, Amlal El Mahrouss, licensed under Apache 2.0.
-
-------------------------------------------- */
+// Copyright 2024-2025, Amlal El Mahrouss (amlal@nekernel.org)
+// Distributed under the Apache Software License, Version 2.0. (See accompanying
+// file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
+// Official repository: https://github.com/nekernel-org/neboot
 
 #pragma once
 
@@ -54,9 +53,11 @@ typedef ptrtype_t        size_t;
 
 /// C23 introduces `nullptr`: https://en.cppreference.com/w/c/language/nullptr.html
 #if __STDC_VERSION__ < 202311L
-#define nullptr ((struct nullptr_*)null)
+#define nullptr ((struct nullptr_*) null)
 
-struct nullptr_ { char __nullv; };
+struct nullptr_ {
+  char __nullv;
+};
 typedef struct nullptr_* nullptr_t;
 #endif
 
@@ -81,7 +82,7 @@ typedef struct nullptr_* nullptr_t;
 
 #ifndef asm
 #define asm __asm
-#endif // ifndef asm
+#endif  // ifndef asm
 
 #define __COPYRIGHT(s) /* unused */
 
@@ -116,8 +117,7 @@ static inline void __sync_synchronize(void) {
 #define cb_sync_synchronize() __sync_synchronize()
 #endif  // ifndef __COMPILE_POWERPC__
 
-#define NB_BAUDRATE_TABLE \
-  { 300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 }
+#define NB_BAUDRATE_TABLE {300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200}
 
 #define NB_STRING(s) #s
 
@@ -128,13 +128,11 @@ static inline void __sync_synchronize(void) {
 
 #ifndef _Nonnull
 #define _Nonnull
-#endif // ifndef _Nonnull
+#endif  // ifndef _Nonnull
 
 #define NB_BOOT_CALL(struct, offset)                                       \
   volatile cb_proc_t proc_##offset = (volatile cb_proc_t)(struct->offset); \
   proc_##offset();
-
-
 
 /// @brief Binary64 representation (IEE 7554) in a C structure
 typedef union {

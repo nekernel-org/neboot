@@ -3,7 +3,18 @@
 // file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
 // Official repository: https://github.com/nekernel-org/neboot
 
-#include <include/30pin.h>
-#include <include/partition-map.h>
+#pragma once
 
-extern size_t cb_read_30pin(voidptr_t blob, size_t* size, size_t* start_lba);
+#define DSO_MAX_OBJECTS (128)
+
+struct atexit_func_entry_t final {
+  void (*destructor_func)(void*);
+  void* obj_ptr;
+  void* dso_handle;
+};
+
+typedef unsigned uarch_t;
+
+namespace cxxabiv1 {
+typedef void* __guard;
+}

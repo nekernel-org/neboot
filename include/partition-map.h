@@ -7,7 +7,7 @@
 #ifndef __PARTITION_MAP_H__
 #define __PARTITION_MAP_H__
 
-#include <lib/boot.h>
+#include <include/boot.h>
 
 /* @brief AMD64 magic for EPM */
 #define EPM_MAGIC_X86 "EPMAM"
@@ -87,7 +87,7 @@ enum {
   EPM_LINUX       = 0x8f,
   EPM_BSD         = 0x9f,
   EPM_NEKERNEL_OS = 0x1f,
-  EPM_LEGACY_OS      = 0x2f,
+  EPM_LEGACY_OS   = 0x2f,
 };
 
 /// @brief check for supported filesystem.
