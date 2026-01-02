@@ -13,6 +13,7 @@ NeBoot is a cross-platform open implementation of the EPM firmware written in C,
 - [NASM](https://nasm.us/)
 - [Git](https://git-scm.com/)
 - GNU Developer Utils (Make, GCC...)
+- Cross Compiler (RV64, AARCH64)
 
 ## Contributing:
 
