@@ -114,13 +114,13 @@ struct __attribute__((packed)) part_block {
 
 \subsection{\texttt{cb\_filesystem\_exists}}
 \begin{lstlisting}[style=customc]
-boolean cb_filesystem_exists(caddr_t fs, size_t len);
+boolean nb_filesystem_exists(caddr_t fs, size_t len);
 \end{lstlisting}
 Checks if a filesystem name is supported.
 
 \subsection{\texttt{cb\_parse\_partition\_block\_data\_at}}
 \begin{lstlisting}[style=customc]
-bool cb_parse_partition_block_data_at(
+bool nb_parse_partition_block_data_at(
   voidptr_t blob,
   size_t blob_sz,
   size_t index,
@@ -132,7 +132,7 @@ Parses an EPM partition block from a blob at the specified index and returns LBA
 
 \subsection{\texttt{cb\_parse\_partition\_block\_at}}
 \begin{lstlisting}[style=customc]
-part_block_t* cb_parse_partition_block_at(
+part_block_t* nb_parse_partition_block_at(
   voidptr_t blob,
   size_t blob_sz,
   size_t index);

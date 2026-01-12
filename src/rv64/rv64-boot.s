@@ -8,27 +8,27 @@
 
 .option norvc
 
-.extern cb_start_exec
+.extern nb_start_exec
 
-.global cb_reset_vector
-.global cb_hart_present
+.global nb_reset_vector
+.global nb_hart_present
 
 .section .init
 .align 4
 
-cb_reset_vector:
+nb_reset_vector:
 	.cfi_startproc
 
 	csrr t0, mhartid
-	beqz t0, cb_start_exec_asm
+	beqz t0, nb_start_exec_asm
 
-	j cb_start_other
+	j nb_start_other
 
 	.cfi_endproc
 
-cb_start_exec_asm:
+nb_start_exec_asm:
 	lw t0, __nb_hart_counter
-	lw t1, cb_boot_processor_ready
+	lw t1, nb_boot_processor_ready
 
 	not t0, t0
 
@@ -37,11 +37,11 @@ cb_start_exec_asm:
 .option push
 .option norelax
 
-	la gp, cb_global_pointer
+	la gp, nb_global_pointer
 
 .option pop
 
-	la sp, cb_stack_end
+	la sp, nb_stack_end
 
 	la t5, _bss_start
 	la t6, _bss_end
@@ -52,39 +52,39 @@ crt0_bss_clear:
 	bgeu t5, t6, crt0_bss_clear
 
 
-	j cb_start_exec
-	j cb_hang
+	j nb_start_exec
+	j nb_hang
 
-cb_start_other:
-	lw t1, cb_boot_processor_ready
+nb_start_other:
+	lw t1, nb_boot_processor_ready
 
-cb_start_other_wait:
-	beq t1, zero, cb_start_other_wait
+nb_start_other_wait:
+	beq t1, zero, nb_start_other_wait
 
-	la t0, cb_stack_list
-	ld t1, cb_stack_align
+	la t0, nb_stack_list
+	ld t1, nb_stack_align
 	mv sp, t0
 	add t0, zero, t1
-	j cb_hang
+	j nb_hang
 
-.global cb_start_rom
-.global cb_start_context
+.global nb_start_rom
+.global nb_start_context
 
-cb_start_context:
+nb_start_context:
 	mv ra, zero
 	add ra, zero, a1
 	mret
 
 .equ NB_BOOT_ADDR, 0x80020000
 
-cb_start_rom:
+nb_start_rom:
 	li x5, NB_BOOT_ADDR
 	mv ra, zero
 	add ra, zero, t0
 	mret
 
-cb_hang:
-	j cb_start_exec
+nb_hang:
+	j nb_start_exec
 L0:
 	wfi
 	j L0
@@ -92,16 +92,16 @@ L0:
 .bss
 
 .align 4
-cb_hart_present:
+nb_hart_present:
 	.long 0
 
 .data
 
 .align 4
-cb_stack_list:
-	.long cb_memory_end
+nb_stack_list:
+	.long nb_memory_end
 
-cb_stack_align:
+nb_stack_align:
 	.word 0x8000
 
 __nb_max_harts:

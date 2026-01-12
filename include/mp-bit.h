@@ -9,10 +9,10 @@
 /// Name: NeBoot Bits API.
 /// Purpose: Bit manip helpers.
 
-#define cb_set_bit(X, O) X = (1 << O) | X
-#define cb_clear_bit(X, O) X = ~(1 << O) & X
-#define cb_toogle(X, O) X = (1 << O) ^ X
-#define cb_lsb(X) X = X & -X
-#define cb_msb(X) X = -(cb_lsb(X)) & X
+#define nb_set_bit(X, O) X = (1 << O) | X
+#define nb_clear_bit(X, O) X = ~(1 << O) & X
+#define nb_toogle(X, O) X = (1 << O) ^ X
+#define nb_lsb(X) X = X & -X
+#define nb_msb(X) X = -(nb_lsb(X)) & X
 
 #endif  // ifndef __BITMANIP_H__

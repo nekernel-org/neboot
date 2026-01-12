@@ -9,17 +9,17 @@
 #include <include/boot.h>
 #include <include/pci-tree.h>
 
-void cb_write_tlb(uint32_t mas0, uint32_t mas1, uint32_t mas2, uint32_t mas3, uint32_t mas7) {
+void nb_write_tlb(uint32_t mas0, uint32_t mas1, uint32_t mas2, uint32_t mas3, uint32_t mas7) {
   mtspr(MAS0, mas0);
   mtspr(MAS1, mas1);
   mtspr(MAS2, mas2);
   mtspr(MAS3, mas3);
   mtspr(MAS7, mas7);
 
-  cb_flush_tlb();
+  nb_flush_tlb();
 }
 
-void cb_set_tlb(uint8_t tlb, uint32_t epn, uint64_t rpn, uint8_t perms, uint8_t wimge, uint8_t ts,
+void nb_set_tlb(uint8_t tlb, uint32_t epn, uint64_t rpn, uint8_t perms, uint8_t wimge, uint8_t ts,
                 uint8_t esel, uint8_t tsize, uint8_t iprot) {
   if ((mfspr(SPRN_MMUCFG) & MMUCFG_MAVN) == MMUCFG_MAVN_V1 && (tsize & 1)) {
     // this mmu-version does not allow odd tsize values
@@ -32,15 +32,15 @@ void cb_set_tlb(uint8_t tlb, uint32_t epn, uint64_t rpn, uint8_t perms, uint8_t 
   uint32_t mas3 = FSL_BOOKE_MAS3(rpn, 0, perms);
   uint32_t mas7 = FSL_BOOKE_MAS7(rpn);
 
-  cb_write_tlb(mas0, mas1, mas2, mas3, mas7);
+  nb_write_tlb(mas0, mas1, mas2, mas3, mas7);
 }
 
 /// @brief Init hardware before jumping to kernel.
 /// @param
-void cb_init_hw(void) {
+void nb_init_hw(void) {
   /// amlal:
   /// map VGA framebuffer
-  cb_set_tlb(0, NB_FRAMEBUFFER_ADDR, /* v_addr, 0x0000A0000 */
+  nb_set_tlb(0, NB_FRAMEBUFFER_ADDR, /* v_addr, 0x0000A0000 */
              0x0000A000,             /* p_addr. 0x0000A0000  */
              MAS3_SW | MAS3_SR,      /* perm  type=TLB_MAP_IO */
              MAS2_I | MAS2_G,        /* wimge type=TLB_MAP_IO */
@@ -51,7 +51,7 @@ void cb_init_hw(void) {
 
   // map ccsrbar and uart.
   // at start we execute from esel = 0, so chose something else..
-  cb_set_tlb(1, NB_UART_BASE,   /* v_addr   0xe0000000 see  qemu-ppce500.h */
+  nb_set_tlb(1, NB_UART_BASE,   /* v_addr   0xe0000000 see  qemu-ppce500.h */
              0xfe0000000,       /* p_addr. 0xfe0000000  */
              MAS3_SW | MAS3_SR, /* perm  type=TLB_MAP_IO */
              MAS2_I | MAS2_G,   /* wimge type=TLB_MAP_IO */
@@ -62,7 +62,7 @@ void cb_init_hw(void) {
 
   /// amlal:
   /// map pci base for kernel
-  cb_set_tlb(0, NB_BASE_ADDRESS, /* v_addr, 0xFE008000 */
+  nb_set_tlb(0, NB_BASE_ADDRESS, /* v_addr, 0xFE008000 */
              0xFE0008000,        /* p_addr. 0xfe0000000  */
              MAS3_SW | MAS3_SR,  /* perm  type=TLB_MAP_IO */
              MAS2_I | MAS2_G,    /* wimge type=TLB_MAP_IO */
@@ -71,16 +71,16 @@ void cb_init_hw(void) {
              BOOKE_PAGESZ_1M,    /* tsize  ie 2^10kB ie 1MB */
              1);
 
-  cb_pci_init_tree();
+  nb_pci_init_tree();
 
-  cb_pci_append_tree("@fb", NB_FRAMEBUFFER_ADDR, 0x0);
-  cb_pci_append_tree("@mbci", 0x0, 0x0);  // did not found a MBCI base for now...
-  cb_pci_append_tree("@serial", NB_UART_BASE, 0);
-  cb_pci_append_tree("@pci", NB_BASE_ADDRESS, 0x0);
+  nb_pci_append_tree("@fb", NB_FRAMEBUFFER_ADDR, 0x0);
+  nb_pci_append_tree("@mbci", 0x0, 0x0);  // did not found a MBCI base for now...
+  nb_pci_append_tree("@serial", NB_UART_BASE, 0);
+  nb_pci_append_tree("@pci", NB_BASE_ADDRESS, 0x0);
 
-  cb_flush_tlb();
+  nb_flush_tlb();
 }
 
-void cb_flush_tlb(void) {
+void nb_flush_tlb(void) {
   asm volatile("isync;tlbwe;msync;isync");
 };

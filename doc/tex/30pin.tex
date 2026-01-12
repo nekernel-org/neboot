@@ -68,6 +68,22 @@ Defines the kinds of packets used in the 30pin recovery protocol:
     \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP = 3}
     \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP\_ACK = 4}
     \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP\_NACK = 5}
+    \item \texttt{TPIN\_RECOVERY\_PACKET\_KIND\_EOP\_RESET = 6}
 \end{itemize}
+
+\section{30PIN Extensions}
+
+\subsection{Validation Extension 1 (VE-1)}
+
+A valid 30pin recovery packet must have the magic number set to \texttt{"TP"}.
+Moreover, the packet should be validated based on the CRC32 algorithm.
+
+\begin{lstlisting}[language=C]
+void validate_entry(nb_tpin_crc_t crc, nb_tpin_recovery_packet_t* packet);
+\end{lstlisting} The `nb\_tpin\_crc\_t' type shall be of size 4 bytes to hold the CRC32 checksum.
+
+\begin{lstlisting}[language=C]
+typedef uint8_t nb_tpin_crc_t[sizeof(uint32_t)];
+\end{lstlisting} This ensures that the byte are indexable and compatible with CRC32 calculations. Such CRC32 shall be stored in big-endian order. As per networking protocols standard. 
 
 \end{document}

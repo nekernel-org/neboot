@@ -23,7 +23,7 @@
 /// @brief Generic AHCI support.
 
 /// @brief AHCI HBA port.
-typedef struct cb_hba_port {
+typedef struct nb_hba_port {
   uint32_t clb;            // 0x00, command list base address, 1K-byte aligned
   uint32_t clbu;           // 0x04, command list base address upper 32 bits
   uint32_t fb;             // 0x08, FIS base address, 256-byte aligned
@@ -43,12 +43,12 @@ typedef struct cb_hba_port {
   uint32_t fbs;            // 0x40, FIS-based switch control
   uint32_t reserved1[11];  // 0x44 ~ 0x6F, Reserved
   uint32_t vendor[4];      // 0x70 ~ 0x7F, vendor specific
-} cb_hba_port_t;
+} nb_hba_port_t;
 
 /// @brief Check if port is active.
 /// @param port host bus address port.
 /// @return whether sact is active or not.
-static boolean cb_hba_port_active(volatile cb_hba_port_t* port) {
+static boolean nb_hba_port_active(volatile nb_hba_port_t* port) {
   if (!port) return false;
 
   return port->sact;
@@ -57,7 +57,7 @@ static boolean cb_hba_port_active(volatile cb_hba_port_t* port) {
 /// @brief Start HBA command processor.
 /// @param port host bus address port.
 /// @return whether it was successful or not.
-static boolean cb_hba_start_cmd(volatile cb_hba_port_t* port) {
+static boolean nb_hba_start_cmd(volatile nb_hba_port_t* port) {
   if (!port) return false;
 
   size_t timeout = 1000000;
@@ -77,7 +77,7 @@ static boolean cb_hba_start_cmd(volatile cb_hba_port_t* port) {
 /// @brief Stop HBA command from processing.
 /// @param port host bus address port.
 /// @return whether it was successful or not.
-static boolean cb_hba_stop_cmd(volatile cb_hba_port_t* port) {
+static boolean nb_hba_stop_cmd(volatile nb_hba_port_t* port) {
   if (!port) return false;
 
   port->cmd &= ~0x0001;

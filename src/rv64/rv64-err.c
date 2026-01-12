@@ -9,10 +9,10 @@
 
 /// @brief Goes into a panic state.
 /// @param reason why?
-void cb_panic(const char* reason) {
-  cb_put_string("Error: ");
-  cb_put_string(reason);
-  cb_put_char('\n');
+void nb_panic(const char* reason) {
+  nb_put_string("Error: ");
+  nb_put_string(reason);
+  nb_put_char('\n');
 
   while (yes) {
     asm volatile("wfi");

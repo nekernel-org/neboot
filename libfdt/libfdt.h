@@ -45,7 +45,7 @@ struct fdt_header {
   fdt32_t off_dt_strings;    /* offset to strings */
   fdt32_t off_mem_rsvmap;    /* offset to memory reserve map */
   fdt32_t version;           /* format version */
-  fdt32_t last_cocb_version; /* last compatible version */
+  fdt32_t last_conb_version; /* last compatible version */
 
   /* version 2 fields below */
   fdt32_t boot_cpuid_phys; /* Which physical CPU id we're
@@ -154,7 +154,7 @@ int fdt_next_subnode(const void* fdt, int offset);
 #define fdt_off_dt_strings(fdt) (fdt_get_header(fdt, off_dt_strings))
 #define fdt_off_mem_rsvmap(fdt) (fdt_get_header(fdt, off_mem_rsvmap))
 #define fdt_version(fdt) (fdt_get_header(fdt, version))
-#define fdt_last_cocb_version(fdt) (fdt_get_header(fdt, last_cocb_version))
+#define fdt_last_conb_version(fdt) (fdt_get_header(fdt, last_conb_version))
 #define fdt_boot_cpuid_phys(fdt) (fdt_get_header(fdt, boot_cpuid_phys))
 #define fdt_size_dt_strings(fdt) (fdt_get_header(fdt, size_dt_strings))
 #define fdt_size_dt_struct(fdt) (fdt_get_header(fdt, size_dt_struct))
@@ -171,7 +171,7 @@ fdt_set_hdr_(off_dt_struct);
 fdt_set_hdr_(off_dt_strings);
 fdt_set_hdr_(off_mem_rsvmap);
 fdt_set_hdr_(version);
-fdt_set_hdr_(last_cocb_version);
+fdt_set_hdr_(last_conb_version);
 fdt_set_hdr_(boot_cpuid_phys);
 fdt_set_hdr_(size_dt_strings);
 fdt_set_hdr_(size_dt_struct);

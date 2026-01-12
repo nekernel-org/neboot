@@ -91,14 +91,14 @@ enum {
 };
 
 /// @brief check for supported filesystem.
-boolean cb_filesystem_exists(caddr_t fs, size_t len);
+boolean nb_filesystem_exists(caddr_t fs, size_t len);
 
 /// @brief Parse EPM block from blob.
-bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba,
+bool nb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba,
                                       size_t* start_lba, size_t* sector_sz);
 
 /// @brief Parse Partition block info at index.
 /// @param index the partition block to parse.
-part_block_t* cb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index);
+part_block_t* nb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index);
 
 #endif  // ifndef __PARTITION_MAP_H__

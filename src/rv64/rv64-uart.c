@@ -10,42 +10,42 @@
 
 /* this file handles the UART */
 
-static uint8_t* cb_uart_ptr = (uint8_t*) NB_UART_BASE;
+static uint8_t* nb_uart_ptr = (uint8_t*) NB_UART_BASE;
 
-utf_char_t cb_get_char(void) {
+utf_char_t nb_get_char(void) {
   uintptr_t ptr = NB_UART_BASE;
 
   while (!(*(((volatile uint8_t*) ptr) + 0x05) & 0x01));
 
-  return (utf_char_t) *cb_uart_ptr;
+  return (utf_char_t) *nb_uart_ptr;
 }
 
 // we need that one, to avoid sending mutliple chars to UART.
-static boolean cb_locked_put_char = no;
+static boolean nb_locked_put_char = no;
 
-void cb_put_char(utf_char_t ch) {
+void nb_put_char(utf_char_t ch) {
   int32_t timeout = 0;
 
-  while (cb_locked_put_char) {
+  while (nb_locked_put_char) {
     ++timeout;
 
     if (timeout > 1000000) break;
   }
 
-  cb_locked_put_char = yes;
-  *cb_uart_ptr       = ch;
-  cb_locked_put_char = no;
+  nb_locked_put_char = yes;
+  *nb_uart_ptr       = ch;
+  nb_locked_put_char = no;
 }
 
 /// @brief UART put string
 /// @param text the input text.
-size_t cb_put_string(const char* text) {
+size_t nb_put_string(const char* text) {
   if (text == nil) return 0;
 
   size_t i = 0;
 
   for (; i < strlen(text); i++) {
-    cb_put_char(text[i]);
+    nb_put_char(text[i]);
   }
 
   return i;

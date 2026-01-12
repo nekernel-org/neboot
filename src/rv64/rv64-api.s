@@ -4,9 +4,9 @@
 # // Official repository: https://github.com/nekernel-org/neboot
 
 .balign 4
-.global cb_flush_tlb
+.global nb_flush_tlb
 
-cb_flush_tlb:
+nb_flush_tlb:
     sfence.vma
 
     ret

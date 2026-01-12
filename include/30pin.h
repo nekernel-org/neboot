@@ -37,6 +37,13 @@ enum {
   TPIN_RECOVERY_PACKET_KIND_EOP      = 3,
   TPIN_RECOVERY_PACKET_KIND_EOP_ACK  = 4,
   TPIN_RECOVERY_PACKET_KIND_EOP_NACK = 5,
+  TPIN_RECVOERY_PACKET_KIND_RESET    = 6,
+  TPIN_RECOVERY_PACKET_KIND_COUNT    = TPIN_RECVOERY_PACKET_KIND_RESET - TPIN_RECOVERY_PACKET_KIND_BOOT + 1
 };
 
-typedef struct _nb_tpin_recovery_packet cb_tpin_recovery_packet_t;
+/// @brief 30pin CRC type.
+typedef uint8_t nb_tpin_crc_t[sizeof(uint32_t)];
+
+typedef struct _nb_tpin_recovery_packet nb_tpin_recovery_packet_t;
+
+size_t nb_parse_30pin(voidptr_t blob, size_t* size, size_t* start_lba);

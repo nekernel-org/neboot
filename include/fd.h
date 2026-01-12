@@ -22,9 +22,9 @@ typedef struct _nb_file_descriptor {
   int (*f_rewind)(struct _nb_file_descriptor* self);
   int (*f_eof)(struct _nb_file_descriptor* self);
   int (*f_close)(struct _nb_file_descriptor* self);
-} cb_file_descriptor_t;
+} nb_file_descriptor_t;
 
 /// @brief Grabs a new device reference.
 /// @param path the device path.
 /// @return
-cb_file_descriptor_t* cb_grab_fd(const char* path);
+nb_file_descriptor_t* nb_grab_fd(const char* path);

@@ -1,4 +1,4 @@
-ENTRY(cb_reset_vector);
+ENTRY(nb_reset_vector);
  
 . = 0x80000000;
 
@@ -12,7 +12,7 @@ SECTIONS {
 		PROVIDE(_text_end = .);
 	}
 
-	PROVIDE(cb_global_pointer = .);
+	PROVIDE(nb_global_pointer = .);
 
 	.bss : ALIGN(4K) {
 		PROVIDE(_bss_start = .);
@@ -39,8 +39,8 @@ SECTIONS {
 		PROVIDE(_data_end = .);
 	}
 
-	PROVIDE(cb_stack_end = . + 0x1000);
+	PROVIDE(nb_stack_end = . + 0x1000);
 
-	PROVIDE(cb_memory_end = .);
-	PROVIDE(cb_boot_processor_ready = . + 0x4);
+	PROVIDE(nb_memory_end = .);
+	PROVIDE(nb_boot_processor_ready = . + 0x4);
 }

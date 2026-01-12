@@ -5,7 +5,7 @@
 
 #include <include/partition-map.h>
 
-bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba,
+bool nb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t index, size_t* end_lba,
                                       size_t* start_lba, size_t* sector_sz) {
   if (!start_lba || !end_lba || !blob || !blob_sz || !sector_sz ||
       (sizeof(part_block_t) * index) > blob_sz)
@@ -25,12 +25,12 @@ bool cb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t ind
   return true;
 }
 
-part_block_t* cb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index) {
+part_block_t* nb_parse_partition_block_at(voidptr_t blob, size_t blob_sz, size_t index) {
   if (!blob || !blob_sz || (sizeof(part_block_t) * index) > blob_sz) return nil;
 
   part_block_t* block = (part_block_t*) (blob + (sizeof(part_block_t) * index));
 
-  cb_put_string(block->magic);
+  nb_put_string(block->magic);
 
   if (block->version != EPM_REVISION || block->num_blocks < 1 || block->num_blocks > EPM_MAX_BLKS ||
       strcmp(block->magic, EPM_MAGIC) > 0 || block->lba_end == 0 || block->lba_start == 0) {

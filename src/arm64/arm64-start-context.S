@@ -6,11 +6,11 @@
 
 .text
 .balign 4
-.global cb_start_context
-.global cb_boot_processor_ready
+.global nb_start_context
+.global nb_boot_processor_ready
 
-cb_start_context:
-    bl cb_start_context
+nb_start_context:
+    bl nb_start_context
 
-cb_boot_processor_ready:
-    bl cb_boot_processor_ready
+nb_boot_processor_ready:
+    bl nb_boot_processor_ready

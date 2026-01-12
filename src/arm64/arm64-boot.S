@@ -5,10 +5,10 @@
 ------------------------------------------- */
 
 .section .text
-.global cb_reset_vector
-cb_reset_vector:
+.global nb_reset_vector
+nb_reset_vector:
     ldr x0, =0x40080000
     mov sp, x0         
-    b cb_start_exec         
+    b nb_start_exec         
 
 

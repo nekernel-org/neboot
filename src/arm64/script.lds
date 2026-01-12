@@ -1,4 +1,4 @@
-ENTRY(cb_reset_vector)
+ENTRY(nb_reset_vector)
 
 SECTIONS
 {

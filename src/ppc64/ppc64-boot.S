@@ -6,9 +6,9 @@
 .balign 4
 .section .text
 
-.global cb_reset_vector
+.global nb_reset_vector
 
-cb_reset_vector:
+nb_reset_vector:
 	bl	.Laddr			/* get current address */
 .Laddr:
 	mflr	4			/* real address of .Laddr */
@@ -22,27 +22,27 @@ cb_reset_vector:
 
 	/* Let her rip */
 
-	bl 	cb_init_hw
+	bl 	nb_init_hw
 	/* finally execute the firmware */
-	bl	cb_start_exec
+	bl	nb_start_exec
 	/* return value from main is argument to exit */
-	bl	cb_reset_vector
+	bl	nb_reset_vector
 
 	trap
 
-.global cb_start_rom
-.global cb_start_context
-.global cb_boot_processor_ready
+.global nb_start_rom
+.global nb_start_context
+.global nb_boot_processor_ready
 
 .equ NB_BOOT_ADDR, 0x1030000
 
-cb_start_rom:
+nb_start_rom:
 	lis 3, NB_BOOT_ADDR@h
 	addi 3, 3, NB_BOOT_ADDR@l
 
 	blr
 
-cb_start_context:
+nb_start_context:
 	li 4, 0
 	cmp 0, 0, 4, 3
 	blt run_context
@@ -57,5 +57,5 @@ run_context:
 
 .data
 
-cb_boot_processor_ready:
+nb_boot_processor_ready:
 	.word 0
