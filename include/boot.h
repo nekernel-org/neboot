@@ -134,7 +134,7 @@ static inline void __sync_synchronize(void) {
   volatile nb_proc_t proc_##offset = (volatile nb_proc_t)(struct->offset); \
   proc_##offset();
 
-/// @brief Binary64 representation (IEE 7554) in a C structure
+/// @brief Float point number representation (IEEE 754)
 typedef union {
   struct {
     char    __sign;
