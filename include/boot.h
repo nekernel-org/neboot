@@ -134,16 +134,23 @@ static inline void __sync_synchronize(void) {
   volatile nb_proc_t proc_##offset = (volatile nb_proc_t)(struct->offset); \
   proc_##offset();
 
-/// @brief Float point number representation (IEEE 754)
+/// @brief Float point number representation (standard agnostic)
 typedef union {
   struct {
     char    __sign;
     int16_t __mantissa;
     int32_t __exponent;
   };
-
-  float __fv;
 } __attribute__((packed)) binary64_t;
+
+/// @brief Float point number representation (standard agnostic)
+typedef union {
+  struct {
+    char    __sign;
+    int8_t __mantissa;
+    int16_t __exponent;
+  };
+} __attribute__((packed)) binary32_t;
 
 /// \brief UTF-32 character
 typedef uint32_t utf_char_t;
