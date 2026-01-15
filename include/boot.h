@@ -138,8 +138,8 @@ static inline void __sync_synchronize(void) {
 typedef union {
   struct {
     char    __sign;
-    int32_t __mantissa;
-    int16_t __exponent;
+    int16_t __mantissa;
+    int32_t __exponent;
   };
 
   float __fv;
