@@ -20,10 +20,10 @@ NeBoot is a cross-platform open implementation of the EPM firmware written in C,
 Please fork, and clone the repository.
 
 ```sh
-    git clone git@github.com:<your-username>/neboot.git
+    git clone git@github.com:ne-foss-org/neboot.git
     cd neboot
 ```
 
 And then contribute back your changes to `develop`.
 
-###### Copyright 2024-2025, Amlal El Mahrouss and NeKernel.org Authors, licensed under Apache 2.0.
+###### Copyright 2024-2025, Amlal El Mahrouss and Ne.org Authors, licensed under Apache 2.0.
