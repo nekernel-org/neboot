@@ -13,7 +13,7 @@ identifiers:
   - type: url
     value: 'https://nekernel.org'
     description: NeKernel Website.
-repository-code: 'https://github.com/nekernel-org/neboot'
+repository-code: 'https://github.com/ne-foss-org/neboot'
 url: 'https://nekernel.org'
 abstract: >-
   This is NeKernel.org's Bootloader, authored

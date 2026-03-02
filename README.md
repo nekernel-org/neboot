@@ -1,6 +1,6 @@
 # NeBoot
 
-![ARM64](https://github.com/nekernel-org/neboot/actions/workflows/arm64.yml/badge.svg)
+![ARM64](https://github.com/ne-foss-org/neboot/actions/workflows/arm64.yml/badge.svg)
 [![License: GPL-3.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 ## Abstract
