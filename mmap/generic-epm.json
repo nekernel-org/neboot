@@ -3,7 +3,7 @@
     "__pci-tree-version": 1,
     "machine": "EPM GENERIC",
     "type": "Generic",
-    "vendor": "NeKernel.org",
+    "vendor": "Ne.org",
     "fb": "0x1000000",
     "boot": "0x4000000",
     "pci-tree": "0x8002000",
