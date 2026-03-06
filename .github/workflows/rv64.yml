@@ -15,5 +15,5 @@ jobs:
     - uses: actions/checkout@v4
     - name: Install Packages
       run: sudo apt update && sudo apt install gcc-riscv64-unknown-elf
-    - name: Build FW (ARM64)
+    - name: Build FW (RV64)
       run: cd src && cd rv64 && make -f ci.make all

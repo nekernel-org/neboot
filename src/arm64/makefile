@@ -52,7 +52,7 @@ firmware-compile:
 	$(CC) $(FLAGS) $(C_SRC)
 	$(AS) arm64-start-context.S -o arm64-start-context.o
 	$(AS) arm64-boot.S -o arm64-boot.o
-	
+
 
 # launch qemu rule
 .PHONY: run
