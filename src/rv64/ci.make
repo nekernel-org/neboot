@@ -14,7 +14,7 @@ FLAGS=-D__COMPILE_RISCV__ -I../../ -Wall -c -nostdlib -ffreestanding -fno-builti
 C_SRC= $(wildcard *.s) $(wildcard *.c) $(wildcard ../*.c) -c
 
 CXX=riscv64-unknown-elf-g++
-CXX_SRC= $(wildcard *.cpp) $(wildcard ../*.cc) -c
+CXX_SRC= $(wildcard *.cpp) $(wildcard ../*.cpp) -c
 
 LD=riscv64-unknown-elf-ld
 OBJ=*.o
