@@ -9,7 +9,7 @@
 // include this for documentation.
 
 #define NB_FILESYSTEM_COUNT (5U)
-#define NB_FILESYSTEM_LIST {"NeFS", "HeFS", "FAT32", "ext4", "XeFS"}
+#define NB_FILESYSTEM_LIST {"NeFS", "OpenHeFS", "FAT32", "ext4", "NTFS"}
 
 /// @brief check if filesystem is supported by NeBoot.
 /// @param fs the filesystem magic, as provided by EPM.
