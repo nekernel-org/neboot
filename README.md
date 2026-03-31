@@ -26,4 +26,4 @@ Please fork, and clone the repository.
 
 And then contribute back your changes to `develop`.
 
-###### Copyright 2024-2025, Amlal El Mahrouss and Ne.org Authors, licensed under Apache 2.0.
+###### Copyright 2024-2025, Amlal El Mahrouss and Ne.app Authors, licensed under Apache 2.0.
