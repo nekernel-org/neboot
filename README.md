@@ -1,6 +1,5 @@
-# NeBoot
 
-![ARM64](https://github.com/ne-foss-org/neboot/actions/workflows/arm64.yml/badge.svg)
+![ARM64](https://github.com/ne-app-ci/next-boot/actions/workflows/arm64.yml/badge.svg)
 [![License: GPL-3.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 ## Abstract
@@ -20,10 +19,10 @@ NeBoot is a cross-platform open implementation of the EPM firmware written in C,
 Please fork, and clone the repository.
 
 ```sh
-    git clone git@github.com:ne-foss-org/neboot.git
+    git clone git@github.com:ne-app-ci/next-boot.git
     cd neboot
 ```
 
 And then contribute back your changes to `develop`.
 
-###### Copyright 2024-2025, Amlal El Mahrouss and Ne.app Authors, licensed under Apache 2.0.
+###### Copyright 2024-2026, Amlal El Mahrouss, licensed under Apache 2.0.

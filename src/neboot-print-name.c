@@ -1,7 +1,7 @@
 // Copyright 2024-2026, Amlal El Mahrouss (amlal@nekernel.org)
 // Distributed under the Apache Software License, Version 2.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.apache.org/licenses/LICENSE-2.0)
-// Official repository: https://github.com/ne-foss-org/neboot
+// Official repository: https://github.com/ne-app-ci/next-boot
 
 #include <include/boot.h>
 
@@ -9,18 +9,18 @@
 /// @param
 void nb_print_name(void) {
 #ifdef __COMPILE_POWERPC__
-  nb_put_string(">> NeBoot for POWERPC.\r\n");
+  nb_put_string(">> Ne.app NeBoot for POWERPC.\r\n");
 #endif  // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_ARM64__
-  nb_put_string(">> NeBoot for ARM64.\r\n");
+  nb_put_string(">> Ne.app NeBoot for ARM64.\r\n");
 #endif  // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_AMD64__
-  nb_put_string(">> NeBoot for AMD64.\r\n");
+  nb_put_string(">> Ne.app NeBoot for AMD64.\r\n");
 #endif  // __COMPILE_POWERPC__
 
 #ifdef __COMPILE_RISCV__
-  nb_put_string(">> NeBoot for RISC-V.\r\n");
+  nb_put_string(">> Ne.app NeBoot for RISC-V.\r\n");
 #endif  // __COMPILE_POWERPC__
 }
