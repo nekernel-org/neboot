@@ -11,7 +11,7 @@ bool nb_parse_partition_block_data_at(voidptr_t blob, size_t blob_sz, size_t ind
       (sizeof(part_block_t) * index) > blob_sz)
     return false;
 
-  part_block_t* block = (part_block_t*) (blob + (sizeof(part_block_t) * index));
+  const part_block_t* block = (part_block_t*) (blob + (sizeof(part_block_t) * index));
 
   if (block->version != EPM_REVISION || block->num_blocks < 1 || block->num_blocks > EPM_MAX_BLKS ||
       strcmp(block->magic, EPM_MAGIC) > 0 || block->lba_end == 0 || block->lba_start == 0) {
