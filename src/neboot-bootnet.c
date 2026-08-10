@@ -4,3 +4,5 @@
 // Official repository: https://github.com/ne-app-ci/next-boot
 
 #include <include/bootnet.h>
+
+/// @note BootNet shall not be invoked when stagetwo is antosldr/minosldr.
