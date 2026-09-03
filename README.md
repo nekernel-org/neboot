@@ -1,3 +1,4 @@
+For the BCSA reference, see: [BCSA](https://www.ne-app.eu/rfc/0001.txt)
 
 ![ARM64](https://github.com/ne-app-ci/next-boot/actions/workflows/arm64.yml/badge.svg)
 [![License: GPL-3.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
