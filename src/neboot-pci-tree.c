@@ -32,6 +32,8 @@ static struct hw_nb_pci_tree* nb_last_tree   = nil;
 boolean nb_pci_init_tree(void) {
   nb_base_tree = (struct hw_nb_pci_tree*) (NB_PCI_TREE_BASE);
 
+  if (nb_base_tree == nil) return no;
+
   // huh? anyway let's ignore it then.
   if (nb_base_tree->d_magic != NB_PCI_DEV_MAGIC) {
     nb_base_tree->d_magic = NB_PCI_DEV_MAGIC;
