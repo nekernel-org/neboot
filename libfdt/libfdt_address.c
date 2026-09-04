@@ -26,6 +26,8 @@ extern fdt32_t* fdt_append_prop(const void* fdt, int nodeoffset, const char* nam
 #endif
 
 static int fdt_cells(const void* fdt, int nodeoffset, const char* name) {
+  if (!fdt || !name) return 0;
+  
   const fdt32_t* c   = null;
   uint32_t       val = 0;
   int            len = 0;
