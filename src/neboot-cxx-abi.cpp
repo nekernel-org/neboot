@@ -4,11 +4,9 @@
 // Official repository: https://github.com/ne-app-ci/next-boot
 
 #include <include/cxx-abi.hpp>
+#include <include/boot.h>
 
 /// BUGS: 0
-
-extern "C" __SIZE_TYPE__ nb_put_string(const char* text);
-extern "C" void          nb_panic(const char* reason);
 
 extern "C" void __stack_chk_fail() {
   nb_put_string("[stack-canary] Buffer overflow detected, halting...\n");
@@ -20,14 +18,16 @@ void* __dso_handle;
 extern "C" __SIZE_TYPE__ nb_put_string(const char* text);
 extern "C" void          nb_panic(const char* reason);
 
-atexit_func_entry_t __atexit_funcs[DSO_MAX_OBJECTS];
+struct atexit_func_entry_t __atexit_funcs[DSO_MAX_OBJECTS];
 uarch_t             __atexit_func_count;
 
-extern "C" void __cxa_pure_virtual() {
-  nb_put_string("[__cxa_pure_virtual] Placeholder\n");
+extern "C" void __cxa_pure_virtual(void) {
+  nb_put_string("[__cxa_pure_virtual] src: placeholder function.\n");
+  nb_panic("placeholder_canary_fail");
 }
 
 extern "C" int __cxa_atexit(void (*f)(void*), void* arg, void* dso) {
+  if (!arg || !f || !dso) return -1;
   if (__atexit_func_count >= DSO_MAX_OBJECTS) return -1;
 
   __atexit_funcs[__atexit_func_count].destructor_func = f;
@@ -60,6 +60,7 @@ extern "C" void __cxa_finalize(void* f) {
 }
 
 namespace cxxabiv1 {
+
 extern "C" int __cxa_guard_acquire(__guard* g) {
   (void) g;
   return 0;
@@ -73,4 +74,5 @@ extern "C" int __cxa_guard_release(__guard* g) {
 extern "C" void __cxa_guard_abort(__guard* g) {
   (void) g;
 }
+
 }  // namespace cxxabiv1

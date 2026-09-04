@@ -5,7 +5,9 @@
 
 #pragma once
 
+#ifndef DSO_MAX_OBJECTS
 #define DSO_MAX_OBJECTS (128)
+#endif
 
 struct atexit_func_entry_t final {
   void (*destructor_func)(void*);

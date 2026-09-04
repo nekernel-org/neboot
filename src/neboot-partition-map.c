@@ -15,6 +15,7 @@
 /// @param fs the filesystem magic, as provided by EPM.
 boolean nb_filesystem_exists(caddr_t fs, size_t len) {
   if (fs == nil || *fs == 0) return no;
+  if (!len) return no;
 
   char* fs_list[] = NB_FILESYSTEM_LIST;
 
