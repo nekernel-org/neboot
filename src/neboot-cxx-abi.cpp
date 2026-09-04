@@ -13,10 +13,7 @@ extern "C" void __stack_chk_fail() {
   nb_panic("stack_canary_fail");
 }
 
-void* __dso_handle;
-
-extern "C" __SIZE_TYPE__ nb_put_string(const char* text);
-extern "C" void          nb_panic(const char* reason);
+extern "C" void* __dso_handle;
 
 struct atexit_func_entry_t __atexit_funcs[DSO_MAX_OBJECTS];
 uarch_t             __atexit_func_count;
