@@ -20,6 +20,7 @@
 
 size_t strncmp(const char* src, const char* cmp, size_t size) {
   if (src == nil) return 0;
+  if (cmp == nil) return 0;
 
   int32_t counter = 0;
 
@@ -32,6 +33,7 @@ size_t strncmp(const char* src, const char* cmp, size_t size) {
 
 void* memset(void* ptr, const char value, size_t len) {
   if (ptr == nil) return nil;
+  if (len == 0) return nil;
 
   char* start = ptr;
 

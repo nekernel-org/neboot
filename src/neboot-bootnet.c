@@ -5,4 +5,4 @@
 
 #include <include/bootnet.h>
 
-/// @note BootNet shall not be invoked when stagetwo is antosldr/minosldr.
+/// @note BootNet shall not be invoked when the stagetwo supports BootNet.

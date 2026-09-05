@@ -15,6 +15,10 @@
 #define __unix__ 7
 #endif  // !__unix__
 
+#ifndef NB_FLASH_BASE_ADDR
+#define NB_FLASH_BASE_ADDR 0
+#endif
+
 #define __mpboot__ __unix__
 
 typedef __UINTPTR_TYPE__ uintptr_t;

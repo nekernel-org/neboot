@@ -2,9 +2,9 @@ name: Ne.app FW CI (ARM64, develop)
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "stable" ]
   pull_request:
-    branches: [ "develop" ]
+    branches: [ "stable" ]
 
 jobs:
   build:
